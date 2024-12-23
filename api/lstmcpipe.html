@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>lstmcpipe package &#8212; lstmcpipe 0.11.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=2088e4e3"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/lstmcpipe';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lstmcpipe.benchmarks package" href="lstmcpipe.benchmarks.html" />
+    <link rel="prev" title="lstmcpipe commands" href="../cli.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">lstmcpipe 0.11.3 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lstmcpipe_user_doc.html">Analyzers documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../productions.html">Production list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipelines &amp; configs generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/configs_pointings.html">Find and display pointing nodes using lstmcpipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">lstmcpipe commands</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">lstmcpipe package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.benchmarks.html">lstmcpipe.benchmarks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lstmcpipe.config.html">lstmcpipe.config package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.tests.html">lstmcpipe.config.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html">lstmcpipe.hiperta package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lstmcpipe.io.html">lstmcpipe.io package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.tests.html">lstmcpipe.io.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html">lstmcpipe.plots package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lstmcpipe.scripts.html">lstmcpipe.scripts package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.tests.html">lstmcpipe.scripts.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html">lstmcpipe.stages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html">lstmcpipe.tests package</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/lstmcpipe.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>lstmcpipe package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.logging">lstmcpipe.logging module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.logging.setup_logging"><code class="docutils literal notranslate"><span class="pre">setup_logging()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.lstmcpipe_start">lstmcpipe.lstmcpipe_start module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.lstmcpipe_start.build_argparser"><code class="docutils literal notranslate"><span class="pre">build_argparser()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.lstmcpipe_start.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.utils">lstmcpipe.utils module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.compose_wrap_command"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.compose_wrap_command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl1_dl2_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl1_dl2_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl1ab_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl1ab_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_irfs_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl2_irfs_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_sens_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl2_sens_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_sens_plot_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl2_sens_plot_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.merge_dl1_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.merge_dl1_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.r0_dl1_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.r0_dl1_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.slurm_command"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.slurm_command</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.slurm_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.slurm_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.stage_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.stage_default_options()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.submit"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.submit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.train_plot_rf_feat_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.train_plot_rf_feat_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.train_test_splitting_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.train_test_splitting_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.trainpipe_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.trainpipe_default_options</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.batch_mc_production_check"><code class="docutils literal notranslate"><span class="pre">batch_mc_production_check()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.dump_lstchain_std_config"><code class="docutils literal notranslate"><span class="pre">dump_lstchain_std_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.rerun_cmd"><code class="docutils literal notranslate"><span class="pre">rerun_cmd()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.run_command"><code class="docutils literal notranslate"><span class="pre">run_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.save_log_to_file"><code class="docutils literal notranslate"><span class="pre">save_log_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.version">lstmcpipe.version module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="lstmcpipe-package">
+<h1>lstmcpipe package<a class="headerlink" href="#lstmcpipe-package" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.benchmarks.html">lstmcpipe.benchmarks package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.benchmarks.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.benchmarks.html#module-lstmcpipe.benchmarks.irfs">lstmcpipe.benchmarks.irfs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.benchmarks.html#lstmcpipe.benchmarks.irfs.read_gh_cut_table"><code class="docutils literal notranslate"><span class="pre">read_gh_cut_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.benchmarks.html#lstmcpipe.benchmarks.irfs.read_theta_cut_table"><code class="docutils literal notranslate"><span class="pre">read_theta_cut_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.benchmarks.html#lstmcpipe.benchmarks.irfs.theta2_hist_per_energy_bin"><code class="docutils literal notranslate"><span class="pre">theta2_hist_per_energy_bin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.benchmarks.html#module-lstmcpipe.benchmarks">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.config.html">lstmcpipe.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.config.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.tests.html">lstmcpipe.config.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.tests.html#module-lstmcpipe.config.tests.test_paths_config">lstmcpipe.config.tests.test_paths_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.tests.html#module-lstmcpipe.config.tests.test_pipeline_config">lstmcpipe.config.tests.test_pipeline_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.tests.html#module-lstmcpipe.config.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.config.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.config.html#module-lstmcpipe.config.dl1ab_tuning">lstmcpipe.config.dl1ab_tuning module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.dl1ab_tuning.create_dl1ab_tuned_config"><code class="docutils literal notranslate"><span class="pre">create_dl1ab_tuned_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.config.html#module-lstmcpipe.config.paths_config">lstmcpipe.config.paths_config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfig"><code class="docutils literal notranslate"><span class="pre">PathConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfig.generate"><code class="docutils literal notranslate"><span class="pre">PathConfig.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfig.save_yml"><code class="docutils literal notranslate"><span class="pre">PathConfig.save_yml()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.dl1_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.dl1_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.dl2_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.dl2_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.dl2_to_irfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.irf_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.irf_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.models_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.models_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.r0_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.r0_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.r0_to_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyBase.train_pipe"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyBase.train_pipe</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull.dl2_to_irfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull.plot_pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull.plot_pointings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull.r0_to_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFull.train_pipe"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFull.train_pipe</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullDL1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullDL1ab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullDL1ab.dl1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullDL1ab.dl1ab</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullSplitDiffuse"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullSplitDiffuse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullSplitDiffuse.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullSplitDiffuse.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullSplitDiffuse.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullSplitDiffuse.dl2_to_irfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullSplitDiffuse.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullSplitDiffuse.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyFullSplitDiffuse.train_test_split"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyFullSplitDiffuse.train_test_split</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.dl1_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.dl1_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.dl2_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.dl2_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.dl2_output_file"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.dl2_output_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.dl2_to_irfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.irf_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.irf_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.irf_output_file"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.irf_output_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.load_pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.load_pointings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.plot_pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.plot_pointings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.pointing_dirs"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.pointing_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.pointings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.r0_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.r0_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.r0_to_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTesting.testing_merged_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTesting.testing_merged_dl1()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingDL1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingDL1ab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingDL1ab.check_source_prod"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingDL1ab.check_source_prod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingDL1ab.dl1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingDL1ab.dl1ab</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingGammaDiffuse"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingGammaDiffuse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingGammaDiffuse.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingGammaDiffuse.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingGammaDiffuse.dl2_output_file"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingGammaDiffuse.dl2_output_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingGammaDiffuse.load_pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingGammaDiffuse.load_pointings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingGammaDiffuse.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingGammaDiffuse.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTestingGammaDiffuse.testing_merged_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTestingGammaDiffuse.testing_merged_dl1()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.dl1_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.dl1_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.load_pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.load_pointings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.plot_pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.plot_pointings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.pointing_dirs"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.pointing_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.pointings"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.pointings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.r0_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.r0_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.r0_to_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.train_pipe"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.train_pipe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTraining.training_merged_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTraining.training_merged_dl1()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingDL1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingDL1ab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingDL1ab.check_source_prod"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingDL1ab.check_source_prod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingDL1ab.dl1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingDL1ab.dl1ab</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingWithSplit"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingWithSplit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingWithSplit.dl1_diffuse_test_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingWithSplit.dl1_diffuse_test_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingWithSplit.dl1_diffuse_train_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingWithSplit.dl1_diffuse_train_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingWithSplit.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingWithSplit.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllSkyTrainingWithSplit.train_test_split"><code class="docutils literal notranslate"><span class="pre">PathConfigAllSkyTrainingWithSplit.train_test_split</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllTrainTestDL1b"><code class="docutils literal notranslate"><span class="pre">PathConfigAllTrainTestDL1b</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllTrainTestDL1b.check_source_prod"><code class="docutils literal notranslate"><span class="pre">PathConfigAllTrainTestDL1b.check_source_prod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllTrainTestDL1b.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigAllTrainTestDL1b.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigAllTrainTestDL1b.train_pipe"><code class="docutils literal notranslate"><span class="pre">PathConfigAllTrainTestDL1b.train_pipe</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.dl1_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.dl1_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.dl1_to_dl2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.dl2_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.dl2_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.dl2_output_file"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.dl2_output_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.dl2_to_irfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.dl2_to_sensitivity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.irf_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.irf_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.merge_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.merge_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.merge_output_file"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.merge_output_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.models_path"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.models_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.particles"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.particles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.plot_irfs"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.plot_irfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.r0_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.r0_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.r0_to_dl1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.sensitivity_file"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.sensitivity_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.test_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.test_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.train_dir"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.train_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.train_pipe"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.train_pipe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80.train_test_split"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80.train_test_split</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80DL1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80DL1ab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80DL1ab.check_source_prod"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80DL1ab.check_source_prod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80DL1ab.dl1ab"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80DL1ab.dl1ab</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.paths_config.PathConfigProd5Trans80DL1ab.starting_dl1"><code class="docutils literal notranslate"><span class="pre">PathConfigProd5Trans80DL1ab.starting_dl1()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.config.html#module-lstmcpipe.config.pipeline_config">lstmcpipe.config.pipeline_config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.pipeline_config.complete_lstmcpipe_config"><code class="docutils literal notranslate"><span class="pre">complete_lstmcpipe_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.pipeline_config.config_valid"><code class="docutils literal notranslate"><span class="pre">config_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.pipeline_config.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.config.html#module-lstmcpipe.config">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.create_dl1ab_tuned_config"><code class="docutils literal notranslate"><span class="pre">create_dl1ab_tuned_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.html#lstmcpipe.config.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.hiperta.html">lstmcpipe.hiperta package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html#module-lstmcpipe.hiperta.hiperta_r0_to_dl1lstchain">lstmcpipe.hiperta.hiperta_r0_to_dl1lstchain module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.hiperta_r0_to_dl1lstchain.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html#module-lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060">lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060.create_hfile_out"><code class="docutils literal notranslate"><span class="pre">create_hfile_out()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060.dump_plus_copy_node_to_create_new_table"><code class="docutils literal notranslate"><span class="pre">dump_plus_copy_node_to_create_new_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060.rename_mc_shower_colnames"><code class="docutils literal notranslate"><span class="pre">rename_mc_shower_colnames()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060.stack_and_write_images_table"><code class="docutils literal notranslate"><span class="pre">stack_and_write_images_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta300_to_dl1lstchain060.stack_and_write_parameters_table"><code class="docutils literal notranslate"><span class="pre">stack_and_write_parameters_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html#module-lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain">lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.add_column_table"><code class="docutils literal notranslate"><span class="pre">add_column_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.add_disp_and_mc_type_to_parameters_table"><code class="docutils literal notranslate"><span class="pre">add_disp_and_mc_type_to_parameters_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.clip_alt"><code class="docutils literal notranslate"><span class="pre">clip_alt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.create_final_h5"><code class="docutils literal notranslate"><span class="pre">create_final_h5()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.disp"><code class="docutils literal notranslate"><span class="pre">disp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.modify_params_table"><code class="docutils literal notranslate"><span class="pre">modify_params_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.reorganize_dl1"><code class="docutils literal notranslate"><span class="pre">reorganize_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.sky_to_camera"><code class="docutils literal notranslate"><span class="pre">sky_to_camera()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.hiperta.html#lstmcpipe.hiperta.reorganize_dl1hiperta_to_dl1lstchain.stack_by_telid"><code class="docutils literal notranslate"><span class="pre">stack_by_telid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html#module-lstmcpipe.hiperta">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.io.html">lstmcpipe.io package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.io.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.tests.html">lstmcpipe.io.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.io.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.io.tests.html#module-lstmcpipe.io.tests.test_data_management">lstmcpipe.io.tests.test_data_management module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.io.tests.html#module-lstmcpipe.io.tests.test_lstmcpipe_tree_path">lstmcpipe.io.tests.test_lstmcpipe_tree_path module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.io.tests.html#module-lstmcpipe.io.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.io.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.io.html#module-lstmcpipe.io.data_management">lstmcpipe.io.data_management module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.check_and_make_dir"><code class="docutils literal notranslate"><span class="pre">check_and_make_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.check_and_make_dir_without_verification"><code class="docutils literal notranslate"><span class="pre">check_and_make_dir_without_verification()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.check_data_path"><code class="docutils literal notranslate"><span class="pre">check_data_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.check_files_in_dir_from_file"><code class="docutils literal notranslate"><span class="pre">check_files_in_dir_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.get_input_filelist"><code class="docutils literal notranslate"><span class="pre">get_input_filelist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.move_dir_content"><code class="docutils literal notranslate"><span class="pre">move_dir_content()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.query_continue"><code class="docutils literal notranslate"><span class="pre">query_continue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.query_yes_no"><code class="docutils literal notranslate"><span class="pre">query_yes_no()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.data_management.read_lines_file"><code class="docutils literal notranslate"><span class="pre">read_lines_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.io.html#module-lstmcpipe.io.lstmcpipe_tree_path">lstmcpipe.io.lstmcpipe_tree_path module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.lstmcpipe_tree_path.backup_log"><code class="docutils literal notranslate"><span class="pre">backup_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.lstmcpipe_tree_path.create_log_dir"><code class="docutils literal notranslate"><span class="pre">create_log_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.lstmcpipe_tree_path.create_log_files"><code class="docutils literal notranslate"><span class="pre">create_log_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.html#lstmcpipe.io.lstmcpipe_tree_path.update_scancel_file"><code class="docutils literal notranslate"><span class="pre">update_scancel_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.io.html#module-lstmcpipe.io">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.plots.html">lstmcpipe.plots package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html#module-lstmcpipe.plots.images_debug">lstmcpipe.plots.images_debug module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.images_debug.get_cleaning_config"><code class="docutils literal notranslate"><span class="pre">get_cleaning_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.images_debug.get_hillas_container"><code class="docutils literal notranslate"><span class="pre">get_hillas_container()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.images_debug.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html#module-lstmcpipe.plots.plot_irfs">lstmcpipe.plots.plot_irfs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_angular_resolution_from_file"><code class="docutils literal notranslate"><span class="pre">plot_angular_resolution_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_background_rate_from_file"><code class="docutils literal notranslate"><span class="pre">plot_background_rate_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_effective_area_from_file"><code class="docutils literal notranslate"><span class="pre">plot_effective_area_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_energy_bias_from_file"><code class="docutils literal notranslate"><span class="pre">plot_energy_bias_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_energy_dispersion_from_file"><code class="docutils literal notranslate"><span class="pre">plot_energy_dispersion_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_energy_resolution_from_file"><code class="docutils literal notranslate"><span class="pre">plot_energy_resolution_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_gh_cut_per_energy"><code class="docutils literal notranslate"><span class="pre">plot_gh_cut_per_energy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_magic_2014"><code class="docutils literal notranslate"><span class="pre">plot_magic_2014()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_magic_bkg_rate"><code class="docutils literal notranslate"><span class="pre">plot_magic_bkg_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_psf_from_file"><code class="docutils literal notranslate"><span class="pre">plot_psf_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_sensitivity_from_file"><code class="docutils literal notranslate"><span class="pre">plot_sensitivity_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_sensitivity_from_table"><code class="docutils literal notranslate"><span class="pre">plot_sensitivity_from_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_sensitivity_ratio"><code class="docutils literal notranslate"><span class="pre">plot_sensitivity_ratio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_sensitivity_ratio_from_files"><code class="docutils literal notranslate"><span class="pre">plot_sensitivity_ratio_from_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_summary_from_file"><code class="docutils literal notranslate"><span class="pre">plot_summary_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.plot_theta_cut_from_file"><code class="docutils literal notranslate"><span class="pre">plot_theta_cut_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_irfs.read_sensitivity_table"><code class="docutils literal notranslate"><span class="pre">read_sensitivity_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html#module-lstmcpipe.plots.plot_models_importance">lstmcpipe.plots.plot_models_importance module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.plot_models_importance.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html#module-lstmcpipe.plots.pointings">lstmcpipe.plots.pointings module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.plots.html#lstmcpipe.plots.pointings.plot_pointings"><code class="docutils literal notranslate"><span class="pre">plot_pointings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html#module-lstmcpipe.plots">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.scripts.html">lstmcpipe.scripts package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.tests.html">lstmcpipe.scripts.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.scripts.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.scripts.tests.html#module-lstmcpipe.scripts.tests.test_lstmcpipe_validate_config">lstmcpipe.scripts.tests.test_lstmcpipe_validate_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.scripts.tests.html#module-lstmcpipe.scripts.tests.test_scripts">lstmcpipe.scripts.tests.test_scripts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lstmcpipe.scripts.tests.html#module-lstmcpipe.scripts.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.generate_nsb_levels_configs">lstmcpipe.scripts.generate_nsb_levels_configs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_nsb_levels_configs.build_argparser"><code class="docutils literal notranslate"><span class="pre">build_argparser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_nsb_levels_configs.dump_lstchain_nsb_config"><code class="docutils literal notranslate"><span class="pre">dump_lstchain_nsb_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_nsb_levels_configs.lstchain_config_name"><code class="docutils literal notranslate"><span class="pre">lstchain_config_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_nsb_levels_configs.lstmcpipe_config_filename"><code class="docutils literal notranslate"><span class="pre">lstmcpipe_config_filename()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_nsb_levels_configs.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_nsb_levels_configs.prod_id"><code class="docutils literal notranslate"><span class="pre">prod_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.generate_test_lapalma">lstmcpipe.scripts.generate_test_lapalma module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_test_lapalma.generate_test_allsky"><code class="docutils literal notranslate"><span class="pre">generate_test_allsky()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_test_lapalma.generate_test_prod5trans80"><code class="docutils literal notranslate"><span class="pre">generate_test_prod5trans80()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.generate_test_lapalma.generate_tree"><code class="docutils literal notranslate"><span class="pre">generate_tree()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.lstmcpipe_generate_config">lstmcpipe.scripts.lstmcpipe_generate_config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.lstmcpipe_generate_config.ParseKwargs"><code class="docutils literal notranslate"><span class="pre">ParseKwargs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.lstmcpipe_generate_config.build_argparser"><code class="docutils literal notranslate"><span class="pre">build_argparser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.lstmcpipe_generate_config.list_config_classes"><code class="docutils literal notranslate"><span class="pre">list_config_classes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.lstmcpipe_generate_config.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_batch_filelist_cta">lstmcpipe.scripts.script_batch_filelist_cta module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_batch_filelist_cta.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_batch_filelist_lst">lstmcpipe.scripts.script_batch_filelist_lst module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_batch_filelist_lst.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_batch_filelist_lst_dl1ab">lstmcpipe.scripts.script_batch_filelist_lst_dl1ab module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_batch_filelist_lst_dl1ab.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_batch_filelist_rta">lstmcpipe.scripts.script_batch_filelist_rta module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_batch_filelist_rta.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_compare_irfs">lstmcpipe.scripts.script_compare_irfs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_compare_irfs.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_compare_irfs.plot_comparison"><code class="docutils literal notranslate"><span class="pre">plot_comparison()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_dl2_to_sensitivity">lstmcpipe.scripts.script_dl2_to_sensitivity module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_dl2_to_sensitivity.determine_source_position"><code class="docutils literal notranslate"><span class="pre">determine_source_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_dl2_to_sensitivity.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_lstmcpipe_validate_config">lstmcpipe.scripts.script_lstmcpipe_validate_config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.build_argparser"><code class="docutils literal notranslate"><span class="pre">build_argparser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.mc_r0_path"><code class="docutils literal notranslate"><span class="pre">mc_r0_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.mc_requirements"><code class="docutils literal notranslate"><span class="pre">mc_requirements()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.run_lstchain_mc_r0_dl1"><code class="docutils literal notranslate"><span class="pre">run_lstchain_mc_r0_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.test_dl1ab"><code class="docutils literal notranslate"><span class="pre">test_dl1ab()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.test_r0_dl1"><code class="docutils literal notranslate"><span class="pre">test_r0_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_lstmcpipe_validate_config.validate_lstchain"><code class="docutils literal notranslate"><span class="pre">validate_lstchain()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts.script_train_test_splitting">lstmcpipe.scripts.script_train_test_splitting module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_train_test_splitting.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_train_test_splitting.move_files"><code class="docutils literal notranslate"><span class="pre">move_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.html#lstmcpipe.scripts.script_train_test_splitting.write_filelist"><code class="docutils literal notranslate"><span class="pre">write_filelist()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.scripts.html#module-lstmcpipe.scripts">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.stages.html">lstmcpipe.stages package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_dl1_to_dl2">lstmcpipe.stages.mc_dl1_to_dl2 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_dl1_to_dl2.batch_dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">batch_dl1_to_dl2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_dl1_to_dl2.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">dl1_to_dl2()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_dl2_to_irfs">lstmcpipe.stages.mc_dl2_to_irfs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_dl2_to_irfs.batch_dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_irfs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_dl2_to_irfs.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">dl2_to_irfs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_dl2_to_sensitivity">lstmcpipe.stages.mc_dl2_to_sensitivity module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_dl2_to_sensitivity.batch_dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_sensitivity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_dl2_to_sensitivity.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">dl2_to_sensitivity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_merge_dl1">lstmcpipe.stages.mc_merge_dl1 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_merge_dl1.batch_merge_dl1"><code class="docutils literal notranslate"><span class="pre">batch_merge_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_merge_dl1.merge_dl1"><code class="docutils literal notranslate"><span class="pre">merge_dl1()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_process_dl1">lstmcpipe.stages.mc_process_dl1 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_process_dl1.batch_process_dl1"><code class="docutils literal notranslate"><span class="pre">batch_process_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_process_dl1.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">r0_to_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_process_dl1.reprocess_dl1"><code class="docutils literal notranslate"><span class="pre">reprocess_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_process_dl1.submit_dl1_jobs"><code class="docutils literal notranslate"><span class="pre">submit_dl1_jobs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_train">lstmcpipe.stages.mc_train module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_train.batch_plot_rf_features"><code class="docutils literal notranslate"><span class="pre">batch_plot_rf_features()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_train.batch_train_pipe"><code class="docutils literal notranslate"><span class="pre">batch_train_pipe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_train.train_pipe"><code class="docutils literal notranslate"><span class="pre">train_pipe()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages.mc_train_test_splitting">lstmcpipe.stages.mc_train_test_splitting module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_train_test_splitting.batch_train_test_splitting"><code class="docutils literal notranslate"><span class="pre">batch_train_test_splitting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_train_test_splitting.check_empty_dir"><code class="docutils literal notranslate"><span class="pre">check_empty_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.mc_train_test_splitting.train_test_split"><code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.stages.html#module-lstmcpipe.stages">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">batch_dl1_to_dl2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_irfs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_sensitivity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_merge_dl1"><code class="docutils literal notranslate"><span class="pre">batch_merge_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_plot_rf_features"><code class="docutils literal notranslate"><span class="pre">batch_plot_rf_features()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_process_dl1"><code class="docutils literal notranslate"><span class="pre">batch_process_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_train_pipe"><code class="docutils literal notranslate"><span class="pre">batch_train_pipe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.batch_train_test_splitting"><code class="docutils literal notranslate"><span class="pre">batch_train_test_splitting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">dl1_to_dl2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">dl2_to_irfs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">dl2_to_sensitivity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.merge_dl1"><code class="docutils literal notranslate"><span class="pre">merge_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">r0_to_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.reprocess_dl1"><code class="docutils literal notranslate"><span class="pre">reprocess_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.train_pipe"><code class="docutils literal notranslate"><span class="pre">train_pipe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.stages.html#lstmcpipe.stages.train_test_split"><code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe.tests.html">lstmcpipe.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html#module-lstmcpipe.tests.test_cmd_lines">lstmcpipe.tests.test_cmd_lines module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_cmd_lines.test_generate_config"><code class="docutils literal notranslate"><span class="pre">test_generate_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html#module-lstmcpipe.tests.test_install">lstmcpipe.tests.test_install module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_install.test_version"><code class="docutils literal notranslate"><span class="pre">test_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html#module-lstmcpipe.tests.test_utils">lstmcpipe.tests.test_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.mc_gamma_testfile"><code class="docutils literal notranslate"><span class="pre">mc_gamma_testfile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_dump_lstchain_std_config"><code class="docutils literal notranslate"><span class="pre">test_dump_lstchain_std_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_fail_run_command"><code class="docutils literal notranslate"><span class="pre">test_fail_run_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_rerun_cmd"><code class="docutils literal notranslate"><span class="pre">test_rerun_cmd()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_rerun_cmd_lstchain_mc_r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">test_rerun_cmd_lstchain_mc_r0_to_dl1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_run_command"><code class="docutils literal notranslate"><span class="pre">test_run_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_save_log_to_file"><code class="docutils literal notranslate"><span class="pre">test_save_log_to_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.tests.html#lstmcpipe.tests.test_utils.test_sbatch_lst_mc_stage"><code class="docutils literal notranslate"><span class="pre">test_sbatch_lst_mc_stage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html#module-lstmcpipe.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-lstmcpipe.logging">
+<span id="lstmcpipe-logging-module"></span><h2>lstmcpipe.logging module<a class="headerlink" href="#module-lstmcpipe.logging" title="Link to this heading">#</a></h2>
+<p>Helpers to setup logging. Copied and adapted from
+<a class="github reference external" href="https://github.com/fact-project/aict-tools/blob/ee091fc933110ff008e32df02ee12a97e412e8b3/aict_tools/logging.py">fact-project/aict-tools</a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.logging.setup_logging">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.logging.</span></span><span class="sig-name descname"><span class="pre">setup_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.logging.setup_logging" title="Link to this definition">#</a></dt>
+<dd><p>Setup logging using the logging module
+from the python standard library. A handler for
+the terminal and optionally a file handler get setup,
+the logger is using INFO or DEBUG depending on the
+value of <cite>verbose</cite>.
+Numba logs are filtered if they are not WARNING or above,
+because numba creates thousands of lines in the output.</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>logfile: str or path-like</dt><dd><p>File to save logs to.</p>
+</dd>
+<dt>verbose: boolean</dt><dd><p>Whether to enable debug logging</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Link to this heading">#</a></h3>
+<p>logging.Logger</p>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.lstmcpipe_start">
+<span id="lstmcpipe-lstmcpipe-start-module"></span><h2>lstmcpipe.lstmcpipe_start module<a class="headerlink" href="#module-lstmcpipe.lstmcpipe_start" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.lstmcpipe_start.build_argparser">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.lstmcpipe_start.</span></span><span class="sig-name descname"><span class="pre">build_argparser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.lstmcpipe_start.build_argparser" title="Link to this definition">#</a></dt>
+<dd><p>Build argument parser and return it</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.lstmcpipe_start.main">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.lstmcpipe_start.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.lstmcpipe_start.main" title="Link to this definition">#</a></dt>
+<dd><p>Main lstmcpipe script. This will launch the selected stages and start the processing.
+The jobs are submitted, but not awaited meaning that the analysis will be going on after
+the script has exited. To look at the submitted jobs, you can use e.g. <cite>squeue -u $USER</cite>.</p>
+<section id="arguments-that-can-be-passed-via-the-command-line">
+<h3>Arguments, that can be passed via the command line:<a class="headerlink" href="#arguments-that-can-be-passed-via-the-command-line" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>–config_mc_prod / -c</dt><dd><p>path to a yaml configuration file containing lstmcpipe settings
+This defines the stages run, the files processed, …</p>
+</dd>
+<dt>–config_file_lst / -conf_lst</dt><dd><p>path to a yaml configuration file containing lstchain settings
+This defines the processing parameters like cleaning, models…</p>
+</dd>
+<dt>–config_file_ctapipe / -conf_cta</dt><dd><p>same for ctapipe</p>
+</dd>
+<dt>–config_file_rat / -conf_rta</dt><dd><p>same for HIPERTA</p>
+</dd>
+</dl>
+<dl class="option-list">
+<dt><kbd><span class="option">--log-file</span></kbd></dt>
+<dd><p>Optional: path to a file where lstmcpipe logging will be written to.</p>
+</dd>
+<dt><kbd><span class="option">--debug</span></kbd></dt>
+<dd><p>Toggle to enable debug print messages.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.utils">
+<span id="lstmcpipe-utils-module"></span><h2>lstmcpipe.utils module<a class="headerlink" href="#module-lstmcpipe.utils" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lstmcpipe.utils.</span></span><span class="sig-name descname"><span class="pre">SbatchLstMCStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap_command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slurm_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slurm_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slurm_account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slurm_dependencies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_environment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class to (slurm) sbatch a lstMCpipe stage</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.compose_wrap_command">
+<span class="sig-name descname"><span class="pre">compose_wrap_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wrap_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.compose_wrap_command" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.dl1_dl2_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dl1_dl2_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.dl1_dl2_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.dl1ab_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dl1ab_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.dl1ab_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.dl2_irfs_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dl2_irfs_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_irfs_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.dl2_sens_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dl2_sens_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_sens_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.dl2_sens_plot_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dl2_sens_plot_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_sens_plot_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.merge_dl1_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">merge_dl1_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.merge_dl1_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.r0_dl1_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">r0_dl1_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.r0_dl1_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.slurm_command">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slurm_command</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.slurm_command" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.slurm_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slurm_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.slurm_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.stage_default_options">
+<span class="sig-name descname"><span class="pre">stage_default_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.stage_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.submit">
+<span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.submit" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.train_plot_rf_feat_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">train_plot_rf_feat_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.train_plot_rf_feat_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.train_test_splitting_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">train_test_splitting_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.train_test_splitting_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lstmcpipe.utils.SbatchLstMCStage.trainpipe_default_options">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">trainpipe_default_options</span></span><a class="headerlink" href="#lstmcpipe.utils.SbatchLstMCStage.trainpipe_default_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.utils.batch_mc_production_check">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.utils.</span></span><span class="sig-name descname"><span class="pre">batch_mc_production_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_jobids_all_stages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prod_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prod_config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs_files</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.batch_mc_production_check" title="Link to this definition">#</a></dt>
+<dd><p>Check that the dl1_to_dl2 stage, and therefore, the whole workflow has ended correctly.
+The machine information of each job will be dumped to the file.
+The file will take the form <cite>check_MC_prodID_{prod_id}_OK.txt</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_jobids_all_stages</strong> (<em>dict</em>) – dict containing the {stage: all_job_ids related} information</p></li>
+<li><p><strong>log_directory</strong> (<em>Path</em>)</p></li>
+<li><p><strong>prod_id</strong> (<em>str</em>)</p></li>
+<li><p><strong>prod_config_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>)</p></li>
+<li><p><strong>logs_files</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.utils.dump_lstchain_std_config">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.utils.</span></span><span class="sig-name descname"><span class="pre">dump_lstchain_std_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain_config.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allsky</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.dump_lstchain_std_config" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.utils.rerun_cmd">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.utils.</span></span><span class="sig-name descname"><span class="pre">rerun_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_ntry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">failed_jobs_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('/home/runner/LSTMCPIPE_PROD_LOGS/failed_outputs')</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">run_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.rerun_cmd" title="Link to this definition">#</a></dt>
+<dd><p>Rerun the command up to max_ntry times.
+If all attempts fail, raise an exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>list</em>) – Command to run as a list of strings</p></li>
+<li><p><strong>outfile</strong> (<em>Path</em>) – Path to the cmd output file</p></li>
+<li><p><strong>max_ntry</strong> (<em>int</em>) – Maximum number of attempts to run the command</p></li>
+<li><p><strong>failed_jobs_dir</strong> (<em>Path</em><em> or </em><em>str</em>) – Subdirectory to move failed output files to</p></li>
+<li><p><strong>run_kwargs</strong> (<em>kwargs</em>) – Additional keyword arguments for subprocess.run</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If the command fails after all retry attempts</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.utils.run_command">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.utils.</span></span><span class="sig-name descname"><span class="pre">run_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.run_command" title="Link to this definition">#</a></dt>
+<dd><blockquote>
+<div><p>Runs the command passed through args, as a subprocess.Popen() call.</p>
+<p>Based on:
+<a class="github reference external" href="https://github.com/cta-observatory/cta-lstchain/blob/master/lstchain/scripts/tests/test_lstchain_scripts.py#L43">cta-observatory/cta-lstchain</a></p>
+<dl class="simple">
+<dt>args: str or iter</dt><dd><p><cite>Shell</cite> is forced to True, thus a single string (shell cmd) is expected.</p>
+</dd>
+</dl>
+<p>(subprocess.Popen.stdout).strip(’</p>
+</div></blockquote>
+<p>‘)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.utils.save_log_to_file">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.utils.</span></span><span class="sig-name descname"><span class="pre">save_log_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.utils.save_log_to_file" title="Link to this definition">#</a></dt>
+<dd><p>Dumps a dictionary (log) into a dicts of dicts with keys each of the pipeline stages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dictionary</strong> (<em>dict</em>) – The dictionary to be dumped to a file</p></li>
+<li><p><strong>output_file</strong> (<em>str</em><em> or </em><em>Path</em>) – Output file to store the log</p></li>
+<li><p><strong>workflow_step</strong> (<em>str</em>) – Step of the workflow, to be recorded in the log</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.version">
+<span id="lstmcpipe-version-module"></span><h2>lstmcpipe.version module<a class="headerlink" href="#module-lstmcpipe.version" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-lstmcpipe">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lstmcpipe" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../cli.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">lstmcpipe commands</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lstmcpipe.benchmarks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">lstmcpipe.benchmarks package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.logging">lstmcpipe.logging module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.logging.setup_logging"><code class="docutils literal notranslate"><span class="pre">setup_logging()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.lstmcpipe_start">lstmcpipe.lstmcpipe_start module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.lstmcpipe_start.build_argparser"><code class="docutils literal notranslate"><span class="pre">build_argparser()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.lstmcpipe_start.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.utils">lstmcpipe.utils module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.compose_wrap_command"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.compose_wrap_command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl1_dl2_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl1_dl2_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl1ab_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl1ab_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_irfs_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl2_irfs_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_sens_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl2_sens_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.dl2_sens_plot_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.dl2_sens_plot_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.merge_dl1_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.merge_dl1_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.r0_dl1_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.r0_dl1_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.slurm_command"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.slurm_command</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.slurm_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.slurm_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.stage_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.stage_default_options()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.submit"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.submit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.train_plot_rf_feat_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.train_plot_rf_feat_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.train_test_splitting_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.train_test_splitting_default_options</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.SbatchLstMCStage.trainpipe_default_options"><code class="docutils literal notranslate"><span class="pre">SbatchLstMCStage.trainpipe_default_options</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.batch_mc_production_check"><code class="docutils literal notranslate"><span class="pre">batch_mc_production_check()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.dump_lstchain_std_config"><code class="docutils literal notranslate"><span class="pre">dump_lstchain_std_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.rerun_cmd"><code class="docutils literal notranslate"><span class="pre">rerun_cmd()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.run_command"><code class="docutils literal notranslate"><span class="pre">run_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.utils.save_log_to_file"><code class="docutils literal notranslate"><span class="pre">save_log_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.version">lstmcpipe.version module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,.  Last updated 23 Dec 2024 16:31.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1112 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analyzers documentation &#8212; lstmcpipe 0.11.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=2088e4e3"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lstmcpipe_user_doc';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Production list" href="productions.html" />
+    <link rel="prev" title="lstMCpipe" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">lstmcpipe 0.11.3 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyzers documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productions.html">Production list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipelines &amp; configs generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/configs_pointings.html">Find and display pointing nodes using lstmcpipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">lstmcpipe commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/lstmcpipe.html">lstmcpipe package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.benchmarks.html">lstmcpipe.benchmarks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/lstmcpipe.config.html">lstmcpipe.config package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lstmcpipe.config.tests.html">lstmcpipe.config.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.hiperta.html">lstmcpipe.hiperta package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/lstmcpipe.io.html">lstmcpipe.io package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lstmcpipe.io.tests.html">lstmcpipe.io.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.plots.html">lstmcpipe.plots package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/lstmcpipe.scripts.html">lstmcpipe.scripts package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lstmcpipe.scripts.tests.html">lstmcpipe.scripts.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.stages.html">lstmcpipe.stages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.tests.html">lstmcpipe.tests package</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lstmcpipe_user_doc.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyzers documentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-lst-data-analysis">Context: LST data analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-allow-custom-mc-productions-for-specific-analysis-in-an-easy-to-use-and-centralized-manner">How do we allow custom MC productions for specific analysis in an easy-to-use and centralized manner?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-idea">General Idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-for-analyzers">Advantages for analyzers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-for-the-lst-collaboration">Advantages for the LST Collaboration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe-config-file-example">lstmcpipe config file example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-config-file">Generating a config file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelines-and-paths-handling">Pipelines and paths handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstchain-config">lstchain config</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-a-mc-analysis">📊 Requesting a MC analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#production-list">Production list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-your-needs">Determine your needs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-your-config">Generate your config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-your-pull-request">Prepare your pull-request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#and-then">And then?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr-summary-for-analyzers-in-a-hurry">🚀 TL;DR - Summary for analyzers in a hurry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-help">Need help?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cite-lstmcpipe">Cite lstmcpipe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-explanation">Steps explanation 🔍</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-default-directory-structure-for-a-prod5-mc-prod">Example of default directory structure for a prod5 MC prod:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dl0-directory-structure-for-allsky-prod">DL0 directory structure for <em>allsky</em> prod</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dl1-directory-structure">Example DL1 directory structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-models-directory-structure">Example models directory structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dl2-directory-structure">Example DL2 directory structure</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-data-analysis">Real Data analysis 💀</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-support">Pipeline Support 🛠️</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stages">Stages ⚙️</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-and-data-output">📈 Logs and data output</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="analyzers-documentation">
+<h1>Analyzers documentation<a class="headerlink" href="#analyzers-documentation" title="Link to this heading">#</a></h1>
+<!-- new slide -->
+<section id="context-lst-data-analysis">
+<h2>Context: LST data analysis<a class="headerlink" href="#context-lst-data-analysis" title="Link to this heading">#</a></h2>
+<p>An example of workflow:</p>
+<p><a class="reference external" href="https://cta-observatory.github.io/cta-lstchain/lst_analysis_workflow.html"><img alt="" src="https://mermaid.ink/img/pako:eNptkk2LwjAQhv9KyGkXLOh662EvusKCXuqxKTLbjlrIR0lSliL-9500DXTVHNJ8PO87M-nceG0a5Dk_S_NbX8F6ti-EFprRKJYnVb8d-5-Lhe76zrJMOq_qru0wyz6ZIqV0ZbGbVtVM9chu9x-nw6akDztsqhTATdZRUxbLeMmmcQGloBxnIXRnjTeaFiix9tboiUTdJL8YJcamYlodQn8XO5eAmOgDEFQNeBizswiShV31rHgsZ_ZOQREh44CI7X6VPFfJLuW4mtFPScxLeYmtJyxAoTQCxhfqhnAPGuTgWpdM1snkJcMXXKFV0DbUAbegEdxfUaHgOS0bPEMvveBC3wmF3pvjoGuee9vjgvcdeeO2BfqH6v_hV9N6Y3l-BunoEMftIXba2HD3P0O7zCs?type=png" /></a></p>
+<p>Each step of the analysis is implemented in lstchain as a script.
+For example, if you want to train a model, you may run <code class="docutils literal notranslate"><span class="pre">lstchain_mc_train_pipe</span></code>.
+See <a class="reference external" href="https://cta-observatory.github.io/cta-lstchain/introduction.html#analysis-steps">https://cta-observatory.github.io/cta-lstchain/introduction.html#analysis-steps</a></p>
+<!-- vertical slide -->
+<section id="problems">
+<h3>Problems<a class="headerlink" href="#problems" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>lstchain provides individual steps for each stage of the analysis but no complete pipeline <!-- .element: class="fragment" --></p></li>
+<li><p>theses steps need to be orchestrated (dependencies,  inputs/outputs) <!-- .element: class="fragment" --></p></li>
+<li><p>data specific analysis <!-- .element: class="fragment" --></p>
+<ul>
+<li><p>MC are tuned from DL1 level to match real data to be analyzed</p></li>
+<li><p>therefore, the analysis of MC data models productions of models/IRFs are in the hands of analyzers</p></li>
+</ul>
+</li>
+<li><p>job handling can be harder than it seems (logic between them, directory organization, jobs requirements for different configs…)  <!-- .element: class="fragment" --></p></li>
+<li><p>everybody makes mistakes, except Abelardo <!-- .element: class="fragment" --></p></li>
+</ul>
+<!-- vertical slide -->
+</section>
+<section id="how-do-we-allow-custom-mc-productions-for-specific-analysis-in-an-easy-to-use-and-centralized-manner">
+<h3>How do we allow custom MC productions for specific analysis in an easy-to-use and centralized manner?<a class="headerlink" href="#how-do-we-allow-custom-mc-productions-for-specific-analysis-in-an-easy-to-use-and-centralized-manner" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>a common implementation of the pipeline <!-- .element: class="fragment" --></p></li>
+<li><p>a centralized production library <!-- .element: class="fragment" --></p></li>
+<li><p>a way to request for specific productions <!-- .element: class="fragment" --></p></li>
+</ul>
+<p><strong>=&gt; lstmcpipe</strong> <!-- .element: class="fragment" --></p>
+<!-- new slide -->
+</section>
+</section>
+<section id="general-idea">
+<h2>General Idea<a class="headerlink" href="#general-idea" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>common implementation of a pipeline such as</p></li>
+</ul>
+<p><img alt="an example of pipeline" src="https://mermaid.ink/img/pako:eNqdVV1rwjAU_SshD0NBh_row57cYOD2oI9tKZmNGkiTkqQbYv3vy4dN01YtW0C4vfec9Nx7LvYMdzzDcAmBPnvKf3ZHJBRYb2IGrkeWXweBiiPYzJqkOQeU5yjazFyQtIuF4IozU3VRp4wp3inhAHUcQDDLYtY82heA6fQFVGKWKp5mdF65rAmj1XreE-Fe2yO5tGf1xNViesS64KmB7BvD0oh2xxkRGk_0zeFwfXfm2lsT7OdDIb2J3VYyVVgqK9oEyZ-FpZ5_3-o27qHpbeiw_e1WBCLM9WKi5K5kjxvS7IH9ZegO1V9v18MybSOpLChRo1E3Mx53F_IuuQF2KxbuWx_AtT0DT113Grq_MZBTkALXXZg41N9kLSHX_xtUNmX3DJ51SWBEpxlSKBxdaL69oLcNdyxf1Nu7-N_2LlLPf7gJAW5oewPo8PZeB-NMdM10TDBGtcshYNEAKvtqnhKxr8D75i3SP5kMgCVmkijyTdSpAtvXz220bTIB2ZQssaBcRQU72EAmcAJzLHJEMv2ZOBt8DNUR5ziGSx1meI9KqmIYs4uGloU2Hr9mRHEBl3tEJZ5AVCq-PbEdXCpR4hq0Ikh7nNdJbDkf7nNkv0qXX-IaAyQ?type=png" /></p>
+<ul class="simple">
+<li><p>customizable through config file</p></li>
+<li><p>allowing complete reproducibility of the steps</p></li>
+</ul>
+<!-- vertical slide -->
+<section id="advantages-for-analyzers">
+<h3>Advantages for analyzers<a class="headerlink" href="#advantages-for-analyzers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>easy to use (no or minimal code to write)</p></li>
+<li><p>centralized production library</p></li>
+<li><p>reproducibility</p></li>
+<li><p>easy to share with other analyzers and LST Collaboration</p></li>
+<li><p>less time, errors and frustration</p></li>
+</ul>
+<!-- vertical slide -->
+</section>
+<section id="advantages-for-the-lst-collaboration">
+<h3>Advantages for the LST Collaboration<a class="headerlink" href="#advantages-for-the-lst-collaboration" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>centralized production library</p></li>
+<li><p>common implementation</p></li>
+<li><p>increased trust</p></li>
+<li><p>results are easier to compare / reproduce</p></li>
+<li><p>less computing resources</p></li>
+</ul>
+<!-- new slide -->
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<!-- vertical slide -->
+<section id="lstmcpipe-config-file-example">
+<h3>lstmcpipe config file example<a class="headerlink" href="#lstmcpipe-config-file-example" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflow_kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lstchain</span><span class="w">  </span><span class="c1"># should not be modified for LST analyses</span>
+
+<span class="nt">prod_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20230517_v0.9.13_large_offset</span><span class="w">  </span><span class="c1"># you define this !</span>
+
+<span class="nt">source_environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">source_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/software/conda/etc/profile.d/conda.sh</span><span class="w">  </span><span class="c1"># do not modify unless you have your own conda installation (and have a good reason for it)</span>
+<span class="w">  </span><span class="nt">conda_env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lstchain-v0.9.13</span><span class="w">  </span><span class="c1"># name of the conda environment to use for the analysis (must exist on the cluster)</span>
+
+<span class="nt">slurm_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user_account</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpps</span><span class="w">  </span><span class="c1"># slurm user account to use. Keep dpps if the production is run through the PR scheme</span>
+
+<span class="nt">stages_to_run</span><span class="p">:</span><span class="w">  </span><span class="c1"># list of stages to run</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r0_to_dl1</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">merge_dl1</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train_pipe</span>
+
+<span class="c1"># all stages have a list of input/output (mandatory), lstchain options and slurm options</span>
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">r0_to_dl1</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/GammaDiffuse/dec_931/sim_telarray/node_corsika_theta_69.809_az_90.303_/output_v1.4/</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL1/AllSky/20240131_allsky_v0.10.5_all_dec_base/TrainingDataset/dec_931/GammaDiffuse/node_corsika_theta_69.809_az_90.303_</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/GammaDiffuse/dec_931/sim_telarray/node_corsika_theta_69.809_az_269.697_/output_v1.4/</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL1/AllSky/20240131_allsky_v0.10.5_all_dec_base/TrainingDataset/dec_931/GammaDiffuse/node_corsika_theta_69.809_az_269.697_</span>
+<span class="w">  </span><span class="nt">merge_dl1</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL1/AllSky/20230927_v0.10.4_crab_tuned/TrainingDataset/dec_2276/GammaDiffuse</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL1/AllSky/20230927_v0.10.4_crab_tuned/TrainingDataset/dec_2276/GammaDiffuse/dl1_20230927_v0.10.4_crab_tuned_dec_2276_GammaDiffuse_merged.h5</span>
+<span class="w">    </span><span class="nt">options</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--pattern */*.h5 --no-image</span>
+<span class="w">    </span><span class="nt">extra_slurm_options</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">long</span>
+<span class="w">  </span><span class="nt">train_pipe</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">gamma</span><span class="p">:</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL1/AllSky/20240131_allsky_v0.10.5_all_dec_base/TrainingDataset/dec_931/GammaDiffuse/dl1_20240131_allsky_v0.10.5_all_dec_base_dec_931_GammaDiffuse_merged.h5</span>
+<span class="w">        </span><span class="nt">proton</span><span class="p">:</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/mc/DL1/AllSky/20240131_allsky_v0.10.5_all_dec_base/TrainingDataset/dec_931/Protons/dl1_20240131_allsky_v0.10.5_all_dec_base_dec_931_Protons_merged.h5</span>
+<span class="w">      </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/fefs/aswg/data/models/AllSky/20240131_allsky_v0.10.5_all_dec_base/dec_931</span>
+<span class="w">      </span><span class="nt">extra_slurm_options</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxl</span>
+<span class="w">        </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100G</span>
+<span class="w">        </span><span class="nt">cpus-per-task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="c1"># the following stages, even if defined, will not be run as they are not in stages_to_run</span>
+<span class="w">  </span><span class="nt">dl1_to_dl2</span><span class="p">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">dl2_to_irfs</span><span class="p">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<!-- vertical slide -->
+</section>
+<section id="how-it-works">
+<h3>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Each stage is a step of the pipeline and runs a lstchain script  <!-- .element: class="fragment" --></p>
+<ul>
+<li><p>e.g. <code class="docutils literal notranslate"><span class="pre">r0_to_dl1</span></code> runs <code class="docutils literal notranslate"><span class="pre">lstchain_mc_r0_to_dl1</span></code></p></li>
+</ul>
+</li>
+<li><p>Each stage takes a list of input/output (mandatory) <!-- .element: class="fragment" --></p></li>
+<li><p>Other options can be passed to the lstchain script through the config file <!-- .element: class="fragment" --></p></li>
+<li><p>Slurm job options can be passed to each stage using <!-- .element: class="fragment" --> <code class="docutils literal notranslate"><span class="pre">extra_slurm_options</span></code></p></li>
+<li><p>lstmcpipe implements the logic between the stages and the corresponding slurm rules <!-- .element: class="fragment" --></p>
+<ul>
+<li><p>e.g. waiting for all jobs from <code class="docutils literal notranslate"><span class="pre">r0_to_dl1</span></code> to be over before running stage <code class="docutils literal notranslate"><span class="pre">merge_dl1</span></code></p></li>
+</ul>
+</li>
+</ul>
+<!-- vertical slide -->
+</section>
+<section id="generating-a-config-file">
+<h3>Generating a config file<a class="headerlink" href="#generating-a-config-file" title="Link to this heading">#</a></h3>
+<p>The config file can be <strong>created or modified manually</strong>.
+So you can define your own pipeline quite easily, use your own conda environment and target your own directories…</p>
+<p>But <!-- .element: class="fragment" --> can be more convienently <strong>generated</strong> from the command line  <code class="docutils literal notranslate"><span class="pre">lstmcpipe-generate-config</span></code>  that must be run <strong>on the cluster</strong></p>
+<!-- vertical slide -->
+</section>
+<section id="pipelines-and-paths-handling">
+<h3>Pipelines and paths handling<a class="headerlink" href="#pipelines-and-paths-handling" title="Link to this heading">#</a></h3>
+<span style="font-size:smaller;">
+<ul class="simple">
+<li><p>When generating a config, lstmcpipe builds the directory structure for you.</p>
+<ul>
+<li><p>For example, it knows that <code class="docutils literal notranslate"><span class="pre">R0</span></code> data for the allsky prod are stored in <code class="docutils literal notranslate"><span class="pre">/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_*</span></code> and will create the subsequent directory structure, producing DL1 data in <code class="docutils literal notranslate"><span class="pre">/fefs/aswg/data/mc/DL1/AllSky/$PROD_ID/TrainingDataset/dec_*</span></code></p></li>
+</ul>
+</li>
+<li><p>That knowledge is implemented in the <code class="docutils literal notranslate"><span class="pre">lstmcpipe.config.paths_config.PathConfig</span></code> child classes (one child class per pipeline).</p>
+<ul>
+<li><p>The main pipelines are implemented.</p></li>
+<li><p>You can implement your own if you have specific use cases.</p></li>
+</ul>
+</li>
+<li><p>The class name is passed to the <code class="docutils literal notranslate"><span class="pre">lstmcpipe-generate-config</span></code> command line tool, along with options specific to that class.</p>
+<ul>
+<li><p>e.g. <code class="docutils literal notranslate"><span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">whatagreatprod</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span></code></p></li>
+<li><p>you may find the supported pipelines and their generation command-line in the <a class="reference external" href="https://cta-observatory.github.io/lstmcpipe/pipeline">lstmcpipe documentation</a></p></li>
+</ul>
+</li>
+</ul>
+</span>
+<!-- vertical slide -->
+</section>
+<section id="lstchain-config">
+<h3>lstchain config<a class="headerlink" href="#lstchain-config" title="Link to this heading">#</a></h3>
+<p>The command line tool <code class="docutils literal notranslate"><span class="pre">lstmcpipe-generate-config</span></code> also generates a lstchain config file for you.</p>
+<p>It <!-- .element: class="fragment" -->  actually uses <code class="docutils literal notranslate"><span class="pre">lstchain_dump_config</span> <span class="pre">--mc</span></code> to dump the lstchain config from the version installed in your current environment. The config file is:</p>
+<ul>
+<li><!-- .element: class="fragment" -->  complete
+</li>
+<li><p>tailored to MC analysis <!-- .element: class="fragment" --></p></li>
+</ul>
+<p>You <!-- .element: class="fragment" -->  should modify it to your needs, e.g. adding the parameters provided by <code class="docutils literal notranslate"><span class="pre">lstchain_tune_nsb</span></code>.</p>
+<p>Even though lstchain does not strictly require an exhaustive config, please provide one. It will help others and provide a more explicit provenance information. <!-- .element: class="fragment" --></p>
+<!-- new slide -->
+</section>
+</section>
+<section id="requesting-a-mc-analysis">
+<h2>📊 Requesting a MC analysis<a class="headerlink" href="#requesting-a-mc-analysis" title="Link to this heading">#</a></h2>
+<p>As a LST member, you may require a MC analysis with a specific configuration, for example to later analyse a specific source with tuned MC parameters.</p>
+<section id="production-list">
+<h3>Production list<a class="headerlink" href="#production-list" title="Link to this heading">#</a></h3>
+<p>You may find the list of existing productions in <a class="reference external" href="https://cta-observatory.github.io/lstmcpipe/productions.html">the lstmcpipe documentation</a>.
+Please check in this list that a request similar to the one you are about to make does not exist already!</p>
+<!-- vertical slide -->
+</section>
+<section id="determine-your-needs">
+<h3>Determine your needs<a class="headerlink" href="#determine-your-needs" title="Link to this heading">#</a></h3>
+<p>Depending on the real data you want to analyse.</p>
+<p>=&gt; determine the corresponding MC data (e.g. which training declination line ).</p>
+<img src="https://cta-observatory.github.io/lstmcpipe/_images/examples_configs_pointings_19_1.png" width="500">
+<p>You may also check existing ones in <code class="docutils literal notranslate"><span class="pre">/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/</span></code></p>
+<p>=&gt; determine if you need a tuned MC production.</p>
+<!-- vertical slide -->
+</section>
+<section id="generate-your-config">
+<h3>Generate your config<a class="headerlink" href="#generate-your-config" title="Link to this heading">#</a></h3>
+<p>For most analyzers, the easiest way is to use an official conda environment on the cluster and run the <code class="docutils literal notranslate"><span class="pre">lstmcpipe_generate_config</span></code> command line tool.</p>
+<p>For the allsky prod, you may use the following command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lstmcpipe_generate_config<span class="w"> </span>PathConfigAllSkyFull<span class="w"> </span>--prod_id<span class="w"> </span>whatagreatprod<span class="w"> </span>--dec_list<span class="w"> </span>dec_2276
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>your prod_id should be unique and explicit. It will be used to name the directories and files of your production. Add the date and the lstchain version to it, e.g. <code class="docutils literal notranslate"><span class="pre">20240101_v0.10.4_dec_123_crab_tuned</span></code></p></li>
+<li><p>then edit the lstmcpipe config file, <strong>especially for the conda environment that you want to use for the analysis</strong>.</p></li>
+<li><p>check that the rest of the config is ok for you (stages, directories…)</p></li>
+<li><p>edit the lstchain config file, especially to add any NSB tuning parameters. Please provide an exhaustive config that will help others and provide a more explicit provenance information.</p>
+<ul>
+<li><p>see <code class="docutils literal notranslate"><span class="pre">lstchain_tune_nsb</span></code> for more information</p></li>
+</ul>
+</li>
+</ul>
+<!-- vertical slide -->
+</section>
+<section id="prepare-your-pull-request">
+<h3>Prepare your pull-request<a class="headerlink" href="#prepare-your-pull-request" title="Link to this heading">#</a></h3>
+<span style="font-size:smaller;">
+<ol class="arabic simple">
+<li><p>If you are not familiar with git, I recommend you follow the git course: https://escape2020.github.io/school2021/posts/clase04/</p></li>
+<li><p>make sure you are in the <a class="reference external" href="https://github.com/orgs/cta-observatory/people">GitHub cta-observatory organization</a> - if not ask Karl Kosack or Max Linhoff to add you.</p></li>
+<li><p>make sure you are in the <a class="reference external" href="https://github.com/orgs/cta-observatory/teams/lst-dev">GitHub lst-dev group</a> - if not ask Thomas Vuillaume, Ruben Lopez-Coto, Abelardo Moralejo or Max Linhoff to add you.</p></li>
+<li><p>clone the lstmcpipe repository</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">cta</span><span class="o">-</span><span class="n">observatory</span><span class="o">/</span><span class="n">lstmcpipe</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/cta-observatory/lstmcpipe.git</span></code>
+if you did not setup ssh key in your github account)</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>create a directory named after your <code class="docutils literal notranslate"><span class="pre">prod_id</span></code> in <code class="docutils literal notranslate"><span class="pre">lstmcpipe/production_configs/</span></code></p></li>
+<li><p>add your lstmcpipe config, lstchain config and a readme.md file in this directory</p></li>
+<li><p>commit and push your changes in a new branch</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">switch</span> <span class="o">-</span><span class="n">c</span> <span class="n">my_new_branch</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">production_configs</span><span class="o">/</span><span class="n">my_prod_id</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;my new production&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">my_new_branch</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>go to the <a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/">lstmcpipe repository</a> and create a pull-request from your branch</p></li>
+<li><p>wait for the CI to run and check that everything is ok</p></li>
+<li><p>your pull-request will be reviewed and merged if everything is ok</p></li>
+<li><p>you will get notified in the pull-request when the production is ready</p></li>
+</ol>
+</span>
+<!-- vertical slide -->
+</section>
+<section id="and-then">
+<h3>And then?<a class="headerlink" href="#and-then" title="Link to this heading">#</a></h3>
+<p>We will run the production on the cluster using the lstanalyzer account with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lstmcpipe</span> <span class="o">-</span><span class="n">c</span> <span class="n">lstmcpipe_config</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">conf_lst</span> <span class="n">lstchain_config</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>And will notify you in the github pull-request when it is done.</p>
+<p>NB: standard users do not have the writing rights on <code class="docutils literal notranslate"><span class="pre">/fefs/aswg/data/</span></code> so you will not be able to run the production yourself.</p>
+<!-- new slide -->
+</section>
+</section>
+<section id="tl-dr-summary-for-analyzers-in-a-hurry">
+<h2>🚀 TL;DR - Summary for analyzers in a hurry<a class="headerlink" href="#tl-dr-summary-for-analyzers-in-a-hurry" title="Link to this heading">#</a></h2>
+<span style="font-size:66%;">
+<ol class="arabic simple">
+<li><p>Search the production library for an existing one that suits your needs</p></li>
+<li><p>If you find one, you can use it directly (models and DL2 paths are in the config file)</p></li>
+<li><p>If not, you can generate a config file for your own analysis. See <a class="reference external" href="https://cta-observatory.github.io/lstmcpipe/pipeline">lstmcpipe documentation</a> for the list of supported pipelines.
+Example:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cp02</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">fefs</span><span class="o">/</span><span class="n">aswg</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">lstchain</span><span class="o">-</span><span class="n">v0</span><span class="mf">.10.5</span>
+<span class="n">cd</span> <span class="n">lstmcpipe</span><span class="o">/</span><span class="n">production_configs</span>
+<span class="n">mkdir</span> <span class="mi">20240101</span><span class="n">_my_prod_id</span><span class="p">;</span> <span class="n">cd</span> <span class="mi">20240101</span><span class="n">_my_prod_id</span><span class="p">;</span>
+<span class="n">lstmcpipe_generate_config</span> <span class="n">PathConfigAllSkyFull</span> <span class="o">--</span><span class="n">prod_id</span> <span class="mi">20240101</span><span class="n">_my_prod_id</span> <span class="o">--</span><span class="n">dec_list</span> <span class="n">dec_2276</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Check the generated lstmcpipe config. In particular for the conda environment that you want to use for the analysis.</p></li>
+<li><p>Edit the generated lstchain config. In particular to add any NSB tuning parameters. Please provide an exhaustive config that will help others and provide a more explicit provenance information.</p></li>
+<li><p>Create and edit a <code class="docutils literal notranslate"><span class="pre">readme.md</span></code> file in the same directory to describe your production. Don’t add sensitive or private information in this file, refer to the LST wiki if needed.</p></li>
+<li><p>Submit your configs+readme through a pull-request (see dedicated section) in the lstmcpipe repository.</p></li>
+<li><p>Enjoy! 🎉 😎</p></li>
+</ol>
+</span>
+<!-- new slide -->
+</section>
+<section id="need-help">
+<h2>Need help?<a class="headerlink" href="#need-help" title="Link to this heading">#</a></h2>
+<p>Find this documentation again at https://cta-observatory.github.io/lstmcpipe/</p>
+<p>Join the CTA North slack and ask for help in the lstmcpipe_prods channel</p>
+<p><a class="reference external" href="https://cta-north.slack.com/archives/C035H3C2HAS"><img alt="Slack" src="https://img.shields.io/badge/CTA_North_slack-lstmcpipe_prods_channel-darkgreen?logo=slack" /></a></p>
+<!-- new slide -->
+</section>
+<section id="cite-lstmcpipe">
+<h2>Cite lstmcpipe<a class="headerlink" href="#cite-lstmcpipe" title="Link to this heading">#</a></h2>
+<p>If you publish results / analysis, please consider citing lstmcpipe:</p>
+<p>https://cta-observatory.github.io/lstmcpipe/index.html#cite-us</p>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">garcia2022lstmcpipe</span><span class="p">,</span>
+<span class="w">    </span><span class="na">title</span><span class="p">=</span><span class="s">{The lstMCpipe library}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">author</span><span class="p">=</span><span class="s">{Enrique Garcia and Thomas Vuillaume and Lukas Nickel}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">year</span><span class="p">=</span><span class="s">{2022}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">eprint</span><span class="p">=</span><span class="s">{2212.00120}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">archivePrefix</span><span class="p">=</span><span class="s">{arXiv}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">primaryClass</span><span class="p">=</span><span class="s">{astro-ph.IM}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>in addition to the exact lstmcpipe version used from</p>
+<p><a class="reference external" href="https://doi.org/10.5281/zenodo.6460727"><img alt="Zenodo" src="https://zenodo.org/badge/DOI/10.5281/zenodo.6460727.svg" /></a></p>
+<p>You may also want to include the config file with your published code for reproducibility 🔄</p>
+<!-- new slide -->
+</section>
+<section id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<!-- new slide -->
+<section id="steps-explanation">
+<h3>Steps explanation 🔍<a class="headerlink" href="#steps-explanation" title="Link to this heading">#</a></h3>
+<p>The directory structure and the stages to run are determined by the config stages.
+After that, the job dependency between stages is done automatically.
+- If the full workflow is launched, directories will not be verified as containing data. Overwriting will only happen when a MC prods sharing the same <code class="docutils literal notranslate"><span class="pre">prod_id</span></code> and analysed the same day is run
+- If each step is launched independently (advanced users), no overwriting directory will take place prior confirmation from the user</p>
+<!-- vertical slide -->
+<section id="example-of-default-directory-structure-for-a-prod5-mc-prod">
+<h4>Example of default directory structure for a prod5 MC prod:<a class="headerlink" href="#example-of-default-directory-structure-for-a-prod5-mc-prod" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">   </span>/fefs/aswg/data/
+<span class="w">    </span>├──<span class="w"> </span>mc/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>DL0/20200629_prod5_trans_80/<span class="o">{</span>particle<span class="o">}</span>/zenith_20deg/south_pointing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>└──<span class="w"> </span>simtel<span class="w"> </span>files
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>running_analysis/20200629_prod5_trans_80/<span class="o">{</span>particle<span class="o">}</span>/zenith_20deg/south_pointing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>└──<span class="w"> </span>YYYYMMDD_v<span class="o">{</span>lstchain<span class="o">}</span>_<span class="o">{</span>prod_id<span class="o">}</span>/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>└──<span class="w"> </span>temporary<span class="w"> </span>dir<span class="w"> </span><span class="k">for</span><span class="w"> </span>r0_to_dl1<span class="w"> </span>+<span class="w"> </span>merging<span class="w"> </span>stages
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>analysis_logs/20200629_prod5_trans_80/<span class="o">{</span>particle<span class="o">}</span>/zenith_20deg/south_pointing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>└──<span class="w"> </span>YYYYMMDD_v<span class="o">{</span>lstchain<span class="o">}</span>_<span class="o">{</span>prod_id<span class="o">}</span>/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>├──<span class="w"> </span>file_lists_training/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>├──<span class="w"> </span>file_lists_testing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>└──<span class="w"> </span>job_logs/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>DL1/20200629_prod5_trans_80/<span class="o">{</span>particle<span class="o">}</span>/zenith_20deg/south_pointing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>└──<span class="w"> </span>YYYYMMDD_v<span class="o">{</span>lstchain<span class="o">}</span>_<span class="o">{</span>prod_id<span class="o">}</span>/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>├──<span class="w"> </span>dl1<span class="w"> </span>files
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>├──<span class="w"> </span>training/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>└──<span class="w"> </span>testing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>DL2/20200629_prod5_trans_80/<span class="o">{</span>particle<span class="o">}</span>/zenith_20deg/south_pointing/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>└──<span class="w"> </span>YYYYMMDD_v<span class="o">{</span>lstchain<span class="o">}</span>_<span class="o">{</span>prod_id<span class="o">}</span>/
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span><span class="w">       </span>└──<span class="w"> </span>dl2<span class="w"> </span>files
+<span class="w">    </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">   </span>└──<span class="w"> </span>IRF/20200629_prod5_trans_80/zenith_20deg/south_pointing/
+<span class="w">    </span><span class="p">|</span><span class="w">       </span>└──<span class="w"> </span>YYYYMMDD_v<span class="o">{</span>lstchain<span class="o">}</span>_<span class="o">{</span>prod_id<span class="o">}</span>/
+<span class="w">    </span><span class="p">|</span><span class="w">           </span>├──<span class="w"> </span>off0.0deg/
+<span class="w">    </span><span class="p">|</span><span class="w">           </span>├──<span class="w"> </span>off0.4deg/
+<span class="w">    </span><span class="p">|</span><span class="w">           </span>└──<span class="w"> </span>diffuse/
+<span class="w">    </span><span class="p">|</span>
+<span class="w">    </span>└──<span class="w"> </span>models/
+<span class="w">        </span>└──<span class="w"> </span>20200629_prod5_trans_80/zenith_20deg/south_pointing/
+<span class="w">            </span>└──<span class="w"> </span>YYYYMMDD_v<span class="o">{</span>lstchain<span class="o">}</span>_<span class="o">{</span>prod_id<span class="o">}</span>/
+<span class="w">                </span>├──<span class="w"> </span>reg_energy.sav
+<span class="w">                </span>├──<span class="w"> </span>reg_disp_vector.sav
+<span class="w">                </span>└──<span class="w"> </span>cls_gh.sav
+</pre></div>
+</div>
+<!-- vertical slide -->
+</section>
+<section id="dl0-directory-structure-for-allsky-prod">
+<h4>DL0 directory structure for <em>allsky</em> prod<a class="headerlink" href="#dl0-directory-structure-for-allsky-prod" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/
+├──<span class="w"> </span>GammaDiffuse
+│<span class="w">   </span>├──<span class="w"> </span>dec_2276
+│<span class="w">   </span>├──<span class="w"> </span>dec_3476
+│<span class="w">   </span>├──<span class="w"> </span>dec_4822
+│<span class="w">   </span>├──<span class="w"> </span>dec_5573
+│<span class="w">   </span>├──<span class="w"> </span>dec_6166
+│<span class="w">   </span>├──<span class="w"> </span>dec_6166_high_density
+│<span class="w">   </span>├──<span class="w"> </span>dec_6676
+│<span class="w">   </span>├──<span class="w"> </span>dec_931
+│<span class="w">   </span>├──<span class="w"> </span>dec_min_1802
+│<span class="w">   </span>├──<span class="w"> </span>dec_min_2924
+│<span class="w">   </span>└──<span class="w"> </span>dec_min_413
+└──<span class="w"> </span>Protons
+<span class="w">    </span>├──<span class="w"> </span>dec_2276
+<span class="w">    </span>├──<span class="w"> </span>dec_3476
+<span class="w">    </span>├──<span class="w"> </span>dec_4822
+<span class="w">    </span>├──<span class="w"> </span>dec_6166
+<span class="w">    </span>├──<span class="w"> </span>dec_6166_high_density
+<span class="w">    </span>├──<span class="w"> </span>dec_6676
+<span class="w">    </span>├──<span class="w"> </span>dec_931
+<span class="w">    </span>├──<span class="w"> </span>dec_min_1802
+<span class="w">    </span>├──<span class="w"> </span>dec_min_2924
+<span class="w">    </span>└──<span class="w"> </span>dec_min_413
+</pre></div>
+</div>
+<!-- vertical slide -->
+</section>
+<section id="example-dl1-directory-structure">
+<h4>Example DL1 directory structure<a class="headerlink" href="#example-dl1-directory-structure" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/fefs/aswg/data/mc/DL1/AllSky/20240131_allsky_v0.10.5_all_dec_base/
+├── TestingDataset
+│   ├── dl1_20240131_allsky_v0.10.5_all_dec_base_node_theta_10.0_az_102.199__merged.h5
+│   ├── dl1_20240131_allsky_v0.10.5_all_dec_base_node_theta_10.0_az_248.117__merged.h5
+│   ...
+│   ├── dl1_20240131_allsky_v0.10.5_all_dec_base_node_theta_82.155_az_271.199__merged.h5
+│   ├── dl1_20240131_allsky_v0.10.5_all_dec_base_node_theta_82.155_az_79.122__merged.h5
+│   ├── node_theta_10.0_az_102.199_
+│   ├── node_theta_10.0_az_248.117_
+│   ├── node_theta_14.984_az_175.158_
+│   ├── node_theta_14.984_az_355.158_
+│   ...
+│   └── node_theta_82.155_az_79.122_
+└── TrainingDataset
+    ├── dec_2276
+    ├── dec_3476
+    ├── dec_4822
+    ├── dec_6166
+    ├── dec_6676
+    ├── dec_931
+    ├── dec_min_1802
+    ├── dec_min_2924
+    └── dec_min_413
+</pre></div>
+</div>
+<!-- vertical slide -->
+</section>
+<section id="example-models-directory-structure">
+<h4>Example models directory structure<a class="headerlink" href="#example-models-directory-structure" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/fefs/aswg/data/models/AllSky/20240131_allsky_v0.10.5_all_dec_base/
+├──<span class="w"> </span>dec_2276
+├──<span class="w"> </span>dec_3476
+├──<span class="w"> </span>dec_4822
+├──<span class="w"> </span>dec_6166
+├──<span class="w"> </span>dec_6676
+├──<span class="w"> </span>dec_931
+├──<span class="w"> </span>dec_min_1802
+├──<span class="w"> </span>dec_min_2924
+└──<span class="w"> </span>dec_min_413
+</pre></div>
+</div>
+<!-- vertical slide -->
+</section>
+<section id="example-dl2-directory-structure">
+<h4>Example DL2 directory structure<a class="headerlink" href="#example-dl2-directory-structure" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/fefs/aswg/data/mc/DL2/AllSky/20240131_allsky_v0.10.5_all_dec_base/
+└──<span class="w"> </span>TestingDataset
+<span class="w">    </span>├──<span class="w"> </span>dec_2276
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>node_theta_10.0_az_102.199_
+<span class="w">    </span>│<span class="w">   </span>...
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>node_theta_82.155_az_79.122_
+<span class="w">    </span>├──<span class="w"> </span>dec_931
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>node_theta_10.0_az_102.199_
+<span class="w">        </span>...
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>node_theta_82.155_az_79.122_
+<span class="w">    </span>├──<span class="w"> </span>dec_min_1802
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>node_theta_10.0_az_102.199_
+<span class="w">        </span>...
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>node_theta_82.155_az_79.122_
+<span class="w">    </span>├──<span class="w"> </span>dec_min_2924
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>node_theta_10.0_az_102.199_
+<span class="w">        </span>...
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>node_theta_82.155_az_271.199_
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>node_theta_82.155_az_79.122_
+<span class="w">    </span>└──<span class="w"> </span>dec_min_413
+<span class="w">        </span>├──<span class="w"> </span>node_theta_10.0_az_102.199_
+<span class="w">        </span>...
+<span class="w">        </span>├──<span class="w"> </span>node_theta_82.155_az_271.199_
+<span class="w">        </span>└──<span class="w"> </span>node_theta_82.155_az_79.122_
+</pre></div>
+</div>
+<!-- new slide -->
+</section>
+</section>
+<section id="real-data-analysis">
+<h3>Real Data analysis 💀<a class="headerlink" href="#real-data-analysis" title="Link to this heading">#</a></h3>
+<p>Real data analysis is not supposed to be supported by these scripts. Use at your own risk.</p>
+<!-- new slide -->
+</section>
+<section id="pipeline-support">
+<h3>Pipeline Support 🛠️<a class="headerlink" href="#pipeline-support" title="Link to this heading">#</a></h3>
+<span style="font-size:smaller;">
+<p>So far the reference pipeline is <code class="docutils literal notranslate"><span class="pre">lstchain</span></code>.
+There is however some support for <code class="docutils literal notranslate"><span class="pre">ctapipe</span></code> and <code class="docutils literal notranslate"><span class="pre">hiperta</span></code> as well (depending on lstmcpipe version).
+The processing up to dl1 is relatively agnostic of the pipeline; working implementations exist for all of them.</p>
+<p>In the case of <code class="docutils literal notranslate"><span class="pre">hiperta</span></code> a custom script converts the dl1 output to <code class="docutils literal notranslate"><span class="pre">lstchain</span></code> compatible files and the later stages
+run using <code class="docutils literal notranslate"><span class="pre">lstchain</span></code> scripts.</p>
+<p>In the case of <code class="docutils literal notranslate"><span class="pre">ctapipe</span></code> dl1 files can be produced using <code class="docutils literal notranslate"><span class="pre">ctapipe-stage1</span></code>. Once the dependency issues are solved and
+ctapipe 0.12 is released, this will most likely switch to using <code class="docutils literal notranslate"><span class="pre">ctapipe-process</span></code>. We do not have plans to keep supporting older
+versions longer than necessary currently.
+Because the files are not compatible to <code class="docutils literal notranslate"><span class="pre">lstchain</span></code> and there is no support for higher datalevels in <code class="docutils literal notranslate"><span class="pre">ctapipe</span></code> yet, it is not possible
+to use any of the following stages. This might change in the future.</p>
+</span>
+<!-- new slide -->
+</section>
+<section id="stages">
+<h3>Stages ⚙️<a class="headerlink" href="#stages" title="Link to this heading">#</a></h3>
+<p>After launching of the pipeline all selected tasks will be performed in order.
+These are referred to as <em>stages</em> and are collected in <code class="docutils literal notranslate"><span class="pre">lstmcpipe/stages</span></code>.
+Following is a short overview over each stage, that can be specified in the configuration.</p>
+<!-- vertical slide -->
+<p><strong>r0_to_dl1</strong></p>
+<p>In this stage simtel-files are processed up to datalevel 1 and separated into files for training
+and for testing.
+For efficiency reasons files are processed in batches: N files (depending on paricle type
+as that influences the averages duration of the processing) are submitted as one job in a jobarray.
+To group the files together, the paths are saved in files that are passed to
+python scripts in <code class="docutils literal notranslate"><span class="pre">lstmcpipe/scripts</span></code> which then call the selected pipelines
+processing tool. These are:</p>
+<ul class="simple">
+<li><p>lstchain: lstchain_mc_r0_to_dl1</p></li>
+<li><p>ctapipe: ctapipe-stage1</p></li>
+<li><p>rta: lstmcpipe_hiperta_r0_to_dl1lstchain (<code class="docutils literal notranslate"><span class="pre">lstmcpipe/hiperta/hiperta_r0_to_dl1lstchain.py</span></code>)</p></li>
+</ul>
+<!-- vertical slide -->
+<p><strong>dl1ab</strong></p>
+<p>As an alternative to the processing of simtel r0 files, existing dl1 files can be reprocessed.
+This can be useful to apply different cleanings or alter the images by adding noise etc.
+For this to work the old files have to contain images, i.e. they need to have been processed
+using the <code class="docutils literal notranslate"><span class="pre">no_image:</span> <span class="pre">False</span></code> flag in the config.
+The config key <code class="docutils literal notranslate"><span class="pre">dl1_reference_id</span></code> is used to determine the input files.
+Its value needs to be the full prod_id including software versions (i.e. the name of the
+directories directly above the dl1 files).
+For lstchain the dl1ab script is used, ctapipe can use the same script as for simtel
+processing. There is no support for hiperta!</p>
+<!-- vertical slide -->
+<p><strong>merge_dl1</strong></p>
+<p>In this stage the previously created dl1 files are merged so that you end up with
+train and test datesets for the next stages.</p>
+<!-- vertical slide -->
+<p><strong>train_test_split</strong></p>
+<p>Split the dataset into training and testing datasets, performing a random selection of files with the specified ratio
+(default=0.5).</p>
+<!-- vertical slide -->
+<p><strong>train_pipe</strong></p>
+<p>IMPORTANT: From here on out only <code class="docutils literal notranslate"><span class="pre">lstchain</span></code> tools are available. More about that at the end.</p>
+<p>In this stage the models to reconstruct the primary particles properties are trained
+on the gamma-diffuse and proton train data.
+At present this means that random forests are created using lstchains
+<code class="docutils literal notranslate"><span class="pre">lstchain_mc_trainpipe</span></code>
+Models will be stored in the <code class="docutils literal notranslate"><span class="pre">models</span></code> directory.</p>
+<!-- vertical slide -->
+<p><strong>dl1_to_dl2</strong></p>
+<p>The previously trained models are evaluated on the merged dl1 files using <code class="docutils literal notranslate"><span class="pre">lstchain_dl1_to_dl2</span></code> from
+the lstchain package.
+DL2 data can be found in <code class="docutils literal notranslate"><span class="pre">DL2</span></code> directory.</p>
+<!-- vertical slide -->
+<p><strong>dl2_to_irfs</strong></p>
+<p>Point-like IRFs are produced for each set of offset gammas.
+The processing is performed by calling <code class="docutils literal notranslate"><span class="pre">lstchain_create_irf_files</span></code>.</p>
+<!-- vertical slide -->
+<p><strong>dl2_to_sensitivity</strong>
+A sensitivity curve is estimated using a script based on pyirf which performs a cut optimisation
+similar to EventDisplay.
+The script can be found in <code class="docutils literal notranslate"><span class="pre">lstmcpipe/scripts/script_dl2_to_sensitivity.py</span></code>.
+This does not use the IRFs and cuts computed in dl2_to_irfs, so this can not be compared to observed data.
+It is a mere benchmark for the pipeline.</p>
+<!-- new slide -->
+</section>
+<section id="logs-and-data-output">
+<h3>📈 Logs and data output<a class="headerlink" href="#logs-and-data-output" title="Link to this heading">#</a></h3>
+<span style="font-size:smaller;">
+<p>Job logs are stored along with the produced data for each stage.
+E.g. in</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$PPROD_ID</span>/TrainingDataset/dec_2276/Protons/node_theta_16.087_az_108.090_/job_logs_r0dl1/
+</pre></div>
+</div>
+<p>Higher-level, lstmcpipe logs are produced and stored in the <code class="docutils literal notranslate"><span class="pre">$HOME/LSTMCPIPE_PROD_LOGS/</span></code> directory created when installing lstmcpipe.</p>
+<p>Every time a full MC production is launched, two files with logging information are created:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">log_reduced_Prod{3,5}_{PROD_ID}.yml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_onsite_mc_r0_to_dl3_Prod{3,5}_{PROD_ID}.yml</span></code></p></li>
+</ul>
+<p>The first one contains a reduced summary of all the scheduled <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">ids</span></code> (to which particle the job corresponds to),
+while the second one contains the same plus all the commands passed to slurm.</p>
+</span></section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">lstMCpipe</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="productions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Production list</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-lst-data-analysis">Context: LST data analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-allow-custom-mc-productions-for-specific-analysis-in-an-easy-to-use-and-centralized-manner">How do we allow custom MC productions for specific analysis in an easy-to-use and centralized manner?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-idea">General Idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-for-analyzers">Advantages for analyzers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-for-the-lst-collaboration">Advantages for the LST Collaboration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe-config-file-example">lstmcpipe config file example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-config-file">Generating a config file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelines-and-paths-handling">Pipelines and paths handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstchain-config">lstchain config</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-a-mc-analysis">📊 Requesting a MC analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#production-list">Production list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-your-needs">Determine your needs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-your-config">Generate your config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-your-pull-request">Prepare your pull-request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#and-then">And then?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr-summary-for-analyzers-in-a-hurry">🚀 TL;DR - Summary for analyzers in a hurry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-help">Need help?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cite-lstmcpipe">Cite lstmcpipe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-explanation">Steps explanation 🔍</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-default-directory-structure-for-a-prod5-mc-prod">Example of default directory structure for a prod5 MC prod:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dl0-directory-structure-for-allsky-prod">DL0 directory structure for <em>allsky</em> prod</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dl1-directory-structure">Example DL1 directory structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-models-directory-structure">Example models directory structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dl2-directory-structure">Example DL2 directory structure</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-data-analysis">Real Data analysis 💀</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-support">Pipeline Support 🛠️</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stages">Stages ⚙️</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-and-data-output">📈 Logs and data output</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,.  Last updated 23 Dec 2024 16:31.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

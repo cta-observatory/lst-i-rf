@@ -1,0 +1,1469 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>lstmcpipe.stages package &#8212; lstmcpipe 0.11.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=2088e4e3"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/lstmcpipe.stages';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lstmcpipe.tests package" href="lstmcpipe.tests.html" />
+    <link rel="prev" title="lstmcpipe.scripts.tests package" href="lstmcpipe.scripts.tests.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">lstmcpipe 0.11.3 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lstmcpipe_user_doc.html">Analyzers documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../productions.html">Production list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipelines &amp; configs generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/configs_pointings.html">Find and display pointing nodes using lstmcpipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">lstmcpipe commands</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="lstmcpipe.html">lstmcpipe package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.benchmarks.html">lstmcpipe.benchmarks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lstmcpipe.config.html">lstmcpipe.config package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.config.tests.html">lstmcpipe.config.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.hiperta.html">lstmcpipe.hiperta package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lstmcpipe.io.html">lstmcpipe.io package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.io.tests.html">lstmcpipe.io.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.plots.html">lstmcpipe.plots package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lstmcpipe.scripts.html">lstmcpipe.scripts package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstmcpipe.scripts.tests.html">lstmcpipe.scripts.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">lstmcpipe.stages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstmcpipe.tests.html">lstmcpipe.tests package</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/lstmcpipe.stages.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>lstmcpipe.stages package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_dl1_to_dl2">lstmcpipe.stages.mc_dl1_to_dl2 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl1_to_dl2.batch_dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">batch_dl1_to_dl2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl1_to_dl2.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">dl1_to_dl2()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_dl2_to_irfs">lstmcpipe.stages.mc_dl2_to_irfs module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_irfs.batch_dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_irfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_irfs.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">dl2_to_irfs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_dl2_to_sensitivity">lstmcpipe.stages.mc_dl2_to_sensitivity module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_sensitivity.batch_dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_sensitivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_sensitivity.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">dl2_to_sensitivity()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_merge_dl1">lstmcpipe.stages.mc_merge_dl1 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_merge_dl1.batch_merge_dl1"><code class="docutils literal notranslate"><span class="pre">batch_merge_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_merge_dl1.merge_dl1"><code class="docutils literal notranslate"><span class="pre">merge_dl1()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_process_dl1">lstmcpipe.stages.mc_process_dl1 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.batch_process_dl1"><code class="docutils literal notranslate"><span class="pre">batch_process_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">r0_to_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.reprocess_dl1"><code class="docutils literal notranslate"><span class="pre">reprocess_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.submit_dl1_jobs"><code class="docutils literal notranslate"><span class="pre">submit_dl1_jobs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_train">lstmcpipe.stages.mc_train module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train.batch_plot_rf_features"><code class="docutils literal notranslate"><span class="pre">batch_plot_rf_features()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train.batch_train_pipe"><code class="docutils literal notranslate"><span class="pre">batch_train_pipe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train.train_pipe"><code class="docutils literal notranslate"><span class="pre">train_pipe()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_train_test_splitting">lstmcpipe.stages.mc_train_test_splitting module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train_test_splitting.batch_train_test_splitting"><code class="docutils literal notranslate"><span class="pre">batch_train_test_splitting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train_test_splitting.check_empty_dir"><code class="docutils literal notranslate"><span class="pre">check_empty_dir()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train_test_splitting.train_test_split"><code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">batch_dl1_to_dl2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_irfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_sensitivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_merge_dl1"><code class="docutils literal notranslate"><span class="pre">batch_merge_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_plot_rf_features"><code class="docutils literal notranslate"><span class="pre">batch_plot_rf_features()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_process_dl1"><code class="docutils literal notranslate"><span class="pre">batch_process_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_train_pipe"><code class="docutils literal notranslate"><span class="pre">batch_train_pipe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_train_test_splitting"><code class="docutils literal notranslate"><span class="pre">batch_train_test_splitting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">dl1_to_dl2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">dl2_to_irfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">dl2_to_sensitivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.merge_dl1"><code class="docutils literal notranslate"><span class="pre">merge_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">r0_to_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.reprocess_dl1"><code class="docutils literal notranslate"><span class="pre">reprocess_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.train_pipe"><code class="docutils literal notranslate"><span class="pre">train_pipe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.train_test_split"><code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="lstmcpipe-stages-package">
+<h1>lstmcpipe.stages package<a class="headerlink" href="#lstmcpipe-stages-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-lstmcpipe.stages.mc_dl1_to_dl2">
+<span id="lstmcpipe-stages-mc-dl1-to-dl2-module"></span><h2>lstmcpipe.stages.mc_dl1_to_dl2 module<a class="headerlink" href="#module-lstmcpipe.stages.mc_dl1_to_dl2" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_dl1_to_dl2.batch_dl1_to_dl2">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_dl1_to_dl2.</span></span><span class="sig-name descname"><span class="pre">batch_dl1_to_dl2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobid_from_training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_dl1_to_dl2.batch_dl1_to_dl2" title="Link to this definition">#</a></dt>
+<dd><p>Function to batch the dl1_to_dl2 stage once the lstchain train_pipe batched jobs have finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>jobid_from_training</strong> (<em>str</em>) – string containing the jobid from the jobs batched in the train_pipe stage, to be passed to the
+dl1_to_dl2 function (as a slurm dependency)</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+dl1_dl2 function</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid_for_dl2_to_dl3</strong> – string containing the jobids to be passed to the next stage of the workflow (as a slurm dependency)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_dl1_to_dl2.dl1_to_dl2">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_dl1_to_dl2.</span></span><span class="sig-name descname"><span class="pre">dl1_to_dl2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobid_train_pipe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_dl1_to_dl2.dl1_to_dl2" title="Link to this definition">#</a></dt>
+<dd><p>Convert onsite files from dl1 to dl2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file</strong> (<em>str</em>) – FILE DL1 path</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – DIR Dl2 path</p></li>
+<li><p><strong>path_models</strong> (<em>str</em>) – DIR trained models path</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>wait_jobid_train_pipe</strong> (<em>str</em>) – Comma-separated string with the batched jobid from the train stage to indicate the
+dependencies of the current job to be batched</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings
+to be passed to the sbatch commands
+! NOTE : train_pipe AND dl1_to_dl2 MUST BE RUN WITH THE SAME ENVIRONMENT</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_dl1_to_dl2</strong> (<em>dict</em>) – log dictionary containing {jobid: batch_cmd} information</p></li>
+<li><p><strong>jobid_dl1_to_dl2</strong> (<em>str</em>) – batched job_id to be passed to later stages</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages.mc_dl2_to_irfs">
+<span id="lstmcpipe-stages-mc-dl2-to-irfs-module"></span><h2>lstmcpipe.stages.mc_dl2_to_irfs module<a class="headerlink" href="#module-lstmcpipe.stages.mc_dl2_to_irfs" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_dl2_to_irfs.batch_dl2_to_irfs">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_dl2_to_irfs.</span></span><span class="sig-name descname"><span class="pre">batch_dl2_to_irfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_ids_from_dl1_dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_dl2_to_irfs.batch_dl2_to_irfs" title="Link to this definition">#</a></dt>
+<dd><p>Batches the dl2_to_irfs stage (lstchain lstchain_create_irf_files script) once the dl1_to_dl2 stage had finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to lstchain-like config file</p></li>
+<li><p><strong>job_ids_from_dl1_dl2</strong> (<em>str</em>) – Comma-separated string with the job ids from the dl1_to_dl2 stage to be used as a slurm dependency
+to schedule the current stage</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+dl2_to_irfs function</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobs_from_dl2_irf</strong> – Comma-separated jobids batched in the current stage</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_dl2_to_irfs.dl2_to_irfs">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_dl2_to_irfs.</span></span><span class="sig-name descname"><span class="pre">dl2_to_irfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electron_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proton_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_dl1dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_dl2_to_irfs.dl2_to_irfs" title="Link to this definition">#</a></dt>
+<dd><p>Batches interactively the lstchain <cite>lstchain_create_irf_files</cite> entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>electron_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>proton_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>outfile</strong> (<em>str</em>)</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>options</strong> (<em>str</em><em>  | </em><em>None</em>) – options to pass to lstchain_create_irf_files as a string
+Most common: –irf-point-like</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to the
+sbatch commands</p></li>
+<li><p><strong>wait_jobs_dl1dl2</strong> (<em>str</em>) – Comma separated string with the job ids of previous stages (dl1_to_dl2 stage) to be passed as dependencies to
+the create_irfs_files job to be batched.</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_dl2_to_irfs</strong> (<em>dict</em>) – Dictionary-wise log containing {‘job_id’: ‘batched_cmd’} items</p></li>
+<li><p><strong>job_id_dl2_irfs</strong> (<em>str</em>) – Job-id of the batched job to be passed to the last (MC prod check) stage of the workflow.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages.mc_dl2_to_sensitivity">
+<span id="lstmcpipe-stages-mc-dl2-to-sensitivity-module"></span><h2>lstmcpipe.stages.mc_dl2_to_sensitivity module<a class="headerlink" href="#module-lstmcpipe.stages.mc_dl2_to_sensitivity" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_dl2_to_sensitivity.batch_dl2_to_sensitivity">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_dl2_to_sensitivity.</span></span><span class="sig-name descname"><span class="pre">batch_dl2_to_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_ids_from_dl1_dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_dl2_to_sensitivity.batch_dl2_to_sensitivity" title="Link to this definition">#</a></dt>
+<dd><p>Batches the dl2_to_sensitivity stage (<cite>stages.script_dl2_to_sensitivity</cite> based in the pyIRF iib) once the
+dl1_to_dl2 stage had finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>job_ids_from_dl1_dl2</strong> (<em>str</em>) – Comma-separated string with the job ids from the dl1_to_dl2 stage to be used as a slurm dependency
+to schedule the current stage</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+dl2_to_sensitivity function</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid_for_check</strong> – Comma-separated jobids batched in the current stage</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_dl2_to_sensitivity.dl2_to_sensitivity">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_dl2_to_sensitivity.</span></span><span class="sig-name descname"><span class="pre">dl2_to_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_dl1_dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_dl2_to_sensitivity.dl2_to_sensitivity" title="Link to this definition">#</a></dt>
+<dd><p>Function to run the <cite>script_dl2_to_sensitivity</cite> for the gamma (and the different gamma offsets) and gamma-diffuse
+particles.
+Creates the sensitivity <a href="#id1"><span class="problematic" id="id2">*</span></a>.fits.gz files and the corresponding sensitivity curve plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_paths</strong> (<em>dict</em>)</p></li>
+<li><p><strong>output</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to the
+sbatch commands</p></li>
+<li><p><strong>wait_jobs_dl1_dl2</strong> (<em>str</em>) – Comma-separated string with the jobs (dependency) to wait for before launching the cmd</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_dl2_to_sensitivity</strong> (<em>dict</em>) – Dictionary with job_id-slurm command key-value pair used for logging</p></li>
+<li><p><strong>job_id</strong> (<em>str</em>) – String with job_ids batched by the dl2_to_sensitivity script</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages.mc_merge_dl1">
+<span id="lstmcpipe-stages-mc-merge-dl1-module"></span><h2>lstmcpipe.stages.mc_merge_dl1 module<a class="headerlink" href="#module-lstmcpipe.stages.mc_merge_dl1" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_merge_dl1.batch_merge_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_merge_dl1.</span></span><span class="sig-name descname"><span class="pre">batch_merge_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobid_from_splitting</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_merge_dl1.batch_merge_dl1" title="Link to this definition">#</a></dt>
+<dd><p>Function to batch the onsite_mc_merge_and_copy function once the all the r0_to_dl1 jobs (batched by particle type)
+have finished.</p>
+<p>Batch 8 merge_and_copy_dl1 jobs ([train, test] x particle) + the move_dl1 and move_dir jobs (2 per particle).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed
+to <cite>merge_dl1</cite> and <cite>compose_batch_command_of_script</cite> functions.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – Defines workflow kind (lstchain, ctapipe, hiperta)</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+<li><p><strong>jobid_from_splitting</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobids_for_train</strong> – Comma-separated str with all the job-ids to be passed to the next
+stage of the workflow (as a slurm dependency)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_merge_dl1.merge_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_merge_dl1.</span></span><span class="sig-name descname"><span class="pre">merge_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merging_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_merge_dl1.merge_dl1" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>)</p></li>
+<li><p><strong>wait_jobs_split</strong> (<em>str</em>)</p></li>
+<li><p><strong>merging_options</strong> (<em>dict</em>)</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>)</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_merge</strong> (<em>dict</em>)</p></li>
+<li><p><strong>jobid_merge</strong> (<em>str</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages.mc_process_dl1">
+<span id="lstmcpipe-stages-mc-process-dl1-module"></span><h2>lstmcpipe.stages.mc_process_dl1 module<a class="headerlink" href="#module-lstmcpipe.stages.mc_process_dl1" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_process_dl1.batch_process_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_process_dl1.</span></span><span class="sig-name descname"><span class="pre">batch_process_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_production</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_process_dl1.batch_process_dl1" title="Link to this definition">#</a></dt>
+<dd><p>Batch the dl1 processing jobs by particle type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>conf_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dict with source environment (to select the desired conda environment to run the r0/1_to_dl1 stage),
+and the slurm user account.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – One of the supported pipelines. Defines the command to be run on r0 files</p></li>
+<li><p><strong>new_production</strong> (<em>bool</em>) – Whether to analysis simtel or reprocess existing dl1 files.</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary con logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobids_dl1_processing_stage</strong> – string, separated by commas, containing all the jobids of this stage</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_process_dl1.r0_to_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_process_dl1.</span></span><span class="sig-name descname"><span class="pre">r0_to_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_rta_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_process_dl1.r0_to_dl1" title="Link to this definition">#</a></dt>
+<dd><p>R0 to DL1 MC onsite conversion.
+Organizes files and launches slurm jobs in two slurm arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – path to the files directory to analyse</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Output path to store files</p></li>
+<li><p><strong>config_file</strong> (<em>str</em><em> or </em><em>Path</em>) – Path to the {lstchain, ctapipe, HiPeRTA} configuration file</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the full (source + env) source_environment and the slurm_account strings.
+! NOTE : train_pipe AND dl1_to_dl2 <strong>MUST</strong> be run with the same environment.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – One of the supported pipelines. Defines the command to be run on r0 files</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed</p></li>
+<li><p><strong>ARGUMENTS</strong> (<em># HIPERTA</em>)</p></li>
+<li><p><strong>keep_rta_file</strong> (<em>bool</em>) – Flag to indicate whether to keep (keep_rta_file = True) or remove (keep_rta_file = Flase ) the
+<cite>dl1v06_reorganized_*.h5</cite> output file (hiperta_r0_dl1 and re-organiser stages).
+Argument to be passed to the hiperta_r0_to_dl1lstchain script.</p></li>
+<li><p><strong>debug_mode</strong> (<em>bool</em>) – Flag to activate debug_mode. Only compatible with <cite>hiperta</cite> workflow kind, i.e.,
+HiPeRTA functionality. DEFAULT=False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>jobid2log</strong> (<em>dict</em>) – dictionary log containing {jobid: batch_cmd} information</p></li>
+<li><p><em>jobids_r0_dl1</em> – A list of all the jobs sent for input dir</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_process_dl1.reprocess_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_process_dl1.</span></span><span class="sig-name descname"><span class="pre">reprocess_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dl1_files_per_job</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_process_dl1.reprocess_dl1" title="Link to this definition">#</a></dt>
+<dd><p>Reprocessing of existing dl1 files.
+Organizes files and launches slurm jobs in two slurm arrays.
+The same train/test split performed with the earlier r0 to dl1
+processing is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>) – path to the files directory to analyse</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Output path to store files</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, the standard configuration of the selected pipeline is applied</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings.
+! NOTE : train_pipe AND dl1_to_dl2 <strong>MUST</strong> be run with the same environment.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – One of the supported pipelines. Defines the command to be run on r0 files</p></li>
+<li><p><strong>dl1_files_per_job</strong> (<em>int</em>) – Number of dl1 files to be processed per job array that was batched.</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>jobid2log</strong> (<em>dict</em>) – dictionary log containing {jobid: batch_cmd} information</p></li>
+<li><p><em>jobids_dl1_dl1</em> – A list of all the jobs sent for input dir</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_process_dl1.submit_dl1_jobs">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_process_dl1.</span></span><span class="sig-name descname"><span class="pre">submit_dl1_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_type_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dl1_files_per_batched_job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_logs_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dl1_processing_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r0_to_dl1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_process_dl1.submit_dl1_jobs" title="Link to this definition">#</a></dt>
+<dd><p>Compose sbatch command and batches it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>) – path to the files directory to analyse</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – Output path to store files</p></li>
+<li><p><strong>base_cmd</strong> (<em>str</em>) – command choosing the lstmcpipe core script type (script_batch_filelist_*)</p></li>
+<li><p><strong>file_list</strong> (<em>list</em>) – list of r0_dl1 or dl1ab filelist to be passed to the core script</p></li>
+<li><p><strong>job_type_id</strong> (<em>str</em>) – String for job naming depending on the workflow</p></li>
+<li><p><strong>dl1_files_per_batched_job</strong> (<em>int</em>) – Number of dl1 files to be processed per job array that was batched.</p></li>
+<li><p><strong>job_logs_dir</strong> (<em>Path</em>) – Directory for the logs of the core script output.
+Should be Path(output_dir).joinpath(“job_logs_*”)</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the full (source + env) source_environment and the slurm_account strings.
+! NOTE : train_pipe AND dl1_to_dl2 <strong>MUST</strong> be run with the same environment.</p></li>
+<li><p><strong>n_jobs_parallel</strong> (<em>int</em>) – Number of array jobs to be processed in parallel.
+Default = 100</p></li>
+<li><p><strong>dl1_processing_type</strong> (<em>str</em>) – String for job and filelist naming</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>jobid2log</strong> (<em>dict</em>)</p></li>
+<li><p><strong>jobid</strong> (<em>str</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages.mc_train">
+<span id="lstmcpipe-stages-mc-train-module"></span><h2>lstmcpipe.stages.mc_train module<a class="headerlink" href="#module-lstmcpipe.stages.mc_train" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_train.batch_plot_rf_features">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_train.</span></span><span class="sig-name descname"><span class="pre">batch_plot_rf_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_jobid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_train.batch_plot_rf_features" title="Link to this definition">#</a></dt>
+<dd><p>Batches the plot_model_importance.py script that creates a .png with the RF feature’s importance models
+after the RF are trained.
+The plot is saved in the same dir in where the modes are stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>config_file: str</dt><dd><p>Path to lstchain config file</p>
+</dd>
+<dt>batch_configuration<span class="classifier">dict</span></dt><dd><p>Dictionary containing the (full) source_environment and the slurm_account strings.</p>
+</dd>
+<dt>train_jobid: str</dt><dd><p>Single jobid from training stage.</p>
+</dd>
+<dt>logs: dict</dt><dd><p>Dictionary with logs files</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> – jobid of batched stage</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_train.batch_train_pipe">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_train.</span></span><span class="sig-name descname"><span class="pre">batch_train_pipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobids_from_merge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_train.batch_train_pipe" title="Link to this definition">#</a></dt>
+<dd><p>Function to batch the lstchain train_pipe once the proton and gamma-diffuse merge_and_copy_dl1 batched jobs have
+finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>jobids_from_merge</strong> (<em>str</em>) – <dl class="simple">
+<dt>string containing the jobids (<strong>*ONLY from proton and gamma-diffuse*</strong>) from the jobs batched in the</dt><dd><p>merge_and_copy_dl1 stage, to be passed to the train_pipe function (as a slurm dependency)</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+the <cite>train_pipe</cite> function.</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid_4_dl1_to_dl2</strong> – string containing the jobid to be passed to the next stage of the workflow (as a slurm dependency).
+For the next stage, however, it will be needed TRAIN + MERGED jobs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_train.train_pipe">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_train.</span></span><span class="sig-name descname"><span class="pre">train_pipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma_dl1_train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proton_dl1_train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_dl1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_train.train_pipe" title="Link to this definition">#</a></dt>
+<dd><p>Train RF from MC DL1 data (onsite LaPalma cluster)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma_dl1_train_file</strong> (<em>str</em>) – FILE path to the gamma</p></li>
+<li><p><strong>proton_dl1_train_file</strong> (<em>str</em>) – FILE path to the proton</p></li>
+<li><p><strong>models_dir</strong> – DIR trained models output path</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to the
+sbatch commands
+! NOTE : train_pipe AND dl1_to_dl2 MUST BE RUN WITH THE SAME ENVIRONMENT</p></li>
+<li><p><strong>wait_jobs_dl1</strong> (<em>str</em>) – A string (of chained job_ids separated by ‘,’ and without spaces between each element), containing
+all the job_ids of the merging stage</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_train</strong> (<em>dict</em>) – dictionary containing the jobid of the batched job as key and the run command (the lstchain_mc_train
+command with all its corresponding arguments) as value.</p></li>
+<li><p><strong>jobid_train</strong> (<em>str</em>) – jobid of the batched job to be send (for dependencies purposes) to the next stage of the
+workflow (onsite_mc_dl1_to_dl2)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages.mc_train_test_splitting">
+<span id="lstmcpipe-stages-mc-train-test-splitting-module"></span><h2>lstmcpipe.stages.mc_train_test_splitting module<a class="headerlink" href="#module-lstmcpipe.stages.mc_train_test_splitting" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_train_test_splitting.batch_train_test_splitting">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_train_test_splitting.</span></span><span class="sig-name descname"><span class="pre">batch_train_test_splitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobids_from_r0dl1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_train_test_splitting.batch_train_test_splitting" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>)</p></li>
+<li><p><strong>jobids_from_r0dl1</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed
+to <cite>merge_dl1</cite> and <cite>compose_batch_command_of_script</cite> functions.</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_train_test_splitting.check_empty_dir">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_train_test_splitting.</span></span><span class="sig-name descname"><span class="pre">check_empty_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_train_test_splitting.check_empty_dir" title="Link to this definition">#</a></dt>
+<dd><p>Check if a directory is empty. If not, erase all its content.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>directory</strong> (<em>Path</em>) – Path to dir to check</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.mc_train_test_splitting.train_test_split">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.mc_train_test_splitting.</span></span><span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dirs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobid_r0_dl1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.mc_train_test_splitting.train_test_split" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_dirs</strong> (<em>dict</em>)</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>)</p></li>
+<li><p><strong>wait_jobid_r0_dl1</strong> (<em>str</em>)</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lstmcpipe.stages">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lstmcpipe.stages" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_dl1_to_dl2">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_dl1_to_dl2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobid_from_training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_dl1_to_dl2" title="Link to this definition">#</a></dt>
+<dd><p>Function to batch the dl1_to_dl2 stage once the lstchain train_pipe batched jobs have finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>jobid_from_training</strong> (<em>str</em>) – string containing the jobid from the jobs batched in the train_pipe stage, to be passed to the
+dl1_to_dl2 function (as a slurm dependency)</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+dl1_dl2 function</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid_for_dl2_to_dl3</strong> – string containing the jobids to be passed to the next stage of the workflow (as a slurm dependency)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_dl2_to_irfs">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_dl2_to_irfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_ids_from_dl1_dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_dl2_to_irfs" title="Link to this definition">#</a></dt>
+<dd><p>Batches the dl2_to_irfs stage (lstchain lstchain_create_irf_files script) once the dl1_to_dl2 stage had finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to lstchain-like config file</p></li>
+<li><p><strong>job_ids_from_dl1_dl2</strong> (<em>str</em>) – Comma-separated string with the job ids from the dl1_to_dl2 stage to be used as a slurm dependency
+to schedule the current stage</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+dl2_to_irfs function</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobs_from_dl2_irf</strong> – Comma-separated jobids batched in the current stage</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_dl2_to_sensitivity">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_dl2_to_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_ids_from_dl1_dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_dl2_to_sensitivity" title="Link to this definition">#</a></dt>
+<dd><p>Batches the dl2_to_sensitivity stage (<cite>stages.script_dl2_to_sensitivity</cite> based in the pyIRF iib) once the
+dl1_to_dl2 stage had finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>job_ids_from_dl1_dl2</strong> (<em>str</em>) – Comma-separated string with the job ids from the dl1_to_dl2 stage to be used as a slurm dependency
+to schedule the current stage</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+dl2_to_sensitivity function</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid_for_check</strong> – Comma-separated jobids batched in the current stage</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_merge_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_merge_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobid_from_splitting</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_merge_dl1" title="Link to this definition">#</a></dt>
+<dd><p>Function to batch the onsite_mc_merge_and_copy function once the all the r0_to_dl1 jobs (batched by particle type)
+have finished.</p>
+<p>Batch 8 merge_and_copy_dl1 jobs ([train, test] x particle) + the move_dl1 and move_dir jobs (2 per particle).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed
+to <cite>merge_dl1</cite> and <cite>compose_batch_command_of_script</cite> functions.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – Defines workflow kind (lstchain, ctapipe, hiperta)</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+<li><p><strong>jobid_from_splitting</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobids_for_train</strong> – Comma-separated str with all the job-ids to be passed to the next
+stage of the workflow (as a slurm dependency)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_plot_rf_features">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_plot_rf_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_jobid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_plot_rf_features" title="Link to this definition">#</a></dt>
+<dd><p>Batches the plot_model_importance.py script that creates a .png with the RF feature’s importance models
+after the RF are trained.
+The plot is saved in the same dir in where the modes are stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>config_file: str</dt><dd><p>Path to lstchain config file</p>
+</dd>
+<dt>batch_configuration<span class="classifier">dict</span></dt><dd><p>Dictionary containing the (full) source_environment and the slurm_account strings.</p>
+</dd>
+<dt>train_jobid: str</dt><dd><p>Single jobid from training stage.</p>
+</dd>
+<dt>logs: dict</dt><dd><p>Dictionary with logs files</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> – jobid of batched stage</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_process_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_process_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_production</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_process_dl1" title="Link to this definition">#</a></dt>
+<dd><p>Batch the dl1 processing jobs by particle type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>conf_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dict with source environment (to select the desired conda environment to run the r0/1_to_dl1 stage),
+and the slurm user account.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – One of the supported pipelines. Defines the command to be run on r0 files</p></li>
+<li><p><strong>new_production</strong> (<em>bool</em>) – Whether to analysis simtel or reprocess existing dl1 files.</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary con logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobids_dl1_processing_stage</strong> – string, separated by commas, containing all the jobids of this stage</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_train_pipe">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_train_pipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobids_from_merge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_train_pipe" title="Link to this definition">#</a></dt>
+<dd><p>Function to batch the lstchain train_pipe once the proton and gamma-diffuse merge_and_copy_dl1 batched jobs have
+finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>) – Core dictionary with {stage: PATHS} information</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>jobids_from_merge</strong> (<em>str</em>) – <dl class="simple">
+<dt>string containing the jobids (<strong>*ONLY from proton and gamma-diffuse*</strong>) from the jobs batched in the</dt><dd><p>merge_and_copy_dl1 stage, to be passed to the train_pipe function (as a slurm dependency)</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to
+the <cite>train_pipe</cite> function.</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobid_4_dl1_to_dl2</strong> – string containing the jobid to be passed to the next stage of the workflow (as a slurm dependency).
+For the next stage, however, it will be needed TRAIN + MERGED jobs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.batch_train_test_splitting">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">batch_train_test_splitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobids_from_r0dl1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.batch_train_test_splitting" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_paths</strong> (<em>dict</em>)</p></li>
+<li><p><strong>jobids_from_r0dl1</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed
+to <cite>merge_dl1</cite> and <cite>compose_batch_command_of_script</cite> functions.</p></li>
+<li><p><strong>logs</strong> (<em>dict</em>) – Dictionary with logs files</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.dl1_to_dl2">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">dl1_to_dl2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobid_train_pipe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.dl1_to_dl2" title="Link to this definition">#</a></dt>
+<dd><p>Convert onsite files from dl1 to dl2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file</strong> (<em>str</em>) – FILE DL1 path</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – DIR Dl2 path</p></li>
+<li><p><strong>path_models</strong> (<em>str</em>) – DIR trained models path</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>wait_jobid_train_pipe</strong> (<em>str</em>) – Comma-separated string with the batched jobid from the train stage to indicate the
+dependencies of the current job to be batched</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings
+to be passed to the sbatch commands
+! NOTE : train_pipe AND dl1_to_dl2 MUST BE RUN WITH THE SAME ENVIRONMENT</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_dl1_to_dl2</strong> (<em>dict</em>) – log dictionary containing {jobid: batch_cmd} information</p></li>
+<li><p><strong>jobid_dl1_to_dl2</strong> (<em>str</em>) – batched job_id to be passed to later stages</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.dl2_to_irfs">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">dl2_to_irfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electron_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proton_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_dl1dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.dl2_to_irfs" title="Link to this definition">#</a></dt>
+<dd><p>Batches interactively the lstchain <cite>lstchain_create_irf_files</cite> entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>electron_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>proton_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>outfile</strong> (<em>str</em>)</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>options</strong> (<em>str</em><em>  | </em><em>None</em>) – options to pass to lstchain_create_irf_files as a string
+Most common: –irf-point-like</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to the
+sbatch commands</p></li>
+<li><p><strong>wait_jobs_dl1dl2</strong> (<em>str</em>) – Comma separated string with the job ids of previous stages (dl1_to_dl2 stage) to be passed as dependencies to
+the create_irfs_files job to be batched.</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_dl2_to_irfs</strong> (<em>dict</em>) – Dictionary-wise log containing {‘job_id’: ‘batched_cmd’} items</p></li>
+<li><p><strong>job_id_dl2_irfs</strong> (<em>str</em>) – Job-id of the batched job to be passed to the last (MC prod check) stage of the workflow.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.dl2_to_sensitivity">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">dl2_to_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_dl1_dl2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.dl2_to_sensitivity" title="Link to this definition">#</a></dt>
+<dd><p>Function to run the <cite>script_dl2_to_sensitivity</cite> for the gamma (and the different gamma offsets) and gamma-diffuse
+particles.
+Creates the sensitivity <a href="#id3"><span class="problematic" id="id4">*</span></a>.fits.gz files and the corresponding sensitivity curve plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_paths</strong> (<em>dict</em>)</p></li>
+<li><p><strong>output</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to the
+sbatch commands</p></li>
+<li><p><strong>wait_jobs_dl1_dl2</strong> (<em>str</em>) – Comma-separated string with the jobs (dependency) to wait for before launching the cmd</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_dl2_to_sensitivity</strong> (<em>dict</em>) – Dictionary with job_id-slurm command key-value pair used for logging</p></li>
+<li><p><strong>job_id</strong> (<em>str</em>) – String with job_ids batched by the dl2_to_sensitivity script</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.merge_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">merge_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merging_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.merge_dl1" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>str</em>)</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>)</p></li>
+<li><p><strong>wait_jobs_split</strong> (<em>str</em>)</p></li>
+<li><p><strong>merging_options</strong> (<em>dict</em>)</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>)</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_merge</strong> (<em>dict</em>)</p></li>
+<li><p><strong>jobid_merge</strong> (<em>str</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.r0_to_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">r0_to_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_rta_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.r0_to_dl1" title="Link to this definition">#</a></dt>
+<dd><p>R0 to DL1 MC onsite conversion.
+Organizes files and launches slurm jobs in two slurm arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – path to the files directory to analyse</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Output path to store files</p></li>
+<li><p><strong>config_file</strong> (<em>str</em><em> or </em><em>Path</em>) – Path to the {lstchain, ctapipe, HiPeRTA} configuration file</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the full (source + env) source_environment and the slurm_account strings.
+! NOTE : train_pipe AND dl1_to_dl2 <strong>MUST</strong> be run with the same environment.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – One of the supported pipelines. Defines the command to be run on r0 files</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed</p></li>
+<li><p><strong>ARGUMENTS</strong> (<em># HIPERTA</em>)</p></li>
+<li><p><strong>keep_rta_file</strong> (<em>bool</em>) – Flag to indicate whether to keep (keep_rta_file = True) or remove (keep_rta_file = Flase ) the
+<cite>dl1v06_reorganized_*.h5</cite> output file (hiperta_r0_dl1 and re-organiser stages).
+Argument to be passed to the hiperta_r0_to_dl1lstchain script.</p></li>
+<li><p><strong>debug_mode</strong> (<em>bool</em>) – Flag to activate debug_mode. Only compatible with <cite>hiperta</cite> workflow kind, i.e.,
+HiPeRTA functionality. DEFAULT=False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>jobid2log</strong> (<em>dict</em>) – dictionary log containing {jobid: batch_cmd} information</p></li>
+<li><p><em>jobids_r0_dl1</em> – A list of all the jobs sent for input dir</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.reprocess_dl1">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">reprocess_dl1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lstchain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dl1_files_per_job</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.reprocess_dl1" title="Link to this definition">#</a></dt>
+<dd><p>Reprocessing of existing dl1 files.
+Organizes files and launches slurm jobs in two slurm arrays.
+The same train/test split performed with the earlier r0 to dl1
+processing is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>) – path to the files directory to analyse</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Output path to store files</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, the standard configuration of the selected pipeline is applied</p></li>
+<li><p><strong>batch_config</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings.
+! NOTE : train_pipe AND dl1_to_dl2 <strong>MUST</strong> be run with the same environment.</p></li>
+<li><p><strong>workflow_kind</strong> (<em>str</em>) – One of the supported pipelines. Defines the command to be run on r0 files</p></li>
+<li><p><strong>dl1_files_per_job</strong> (<em>int</em>) – Number of dl1 files to be processed per job array that was batched.</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>jobid2log</strong> (<em>dict</em>) – dictionary log containing {jobid: batch_cmd} information</p></li>
+<li><p><em>jobids_dl1_dl1</em> – A list of all the jobs sent for input dir</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.train_pipe">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">train_pipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma_dl1_train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proton_dl1_train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobs_dl1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.train_pipe" title="Link to this definition">#</a></dt>
+<dd><p>Train RF from MC DL1 data (onsite LaPalma cluster)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma_dl1_train_file</strong> (<em>str</em>) – FILE path to the gamma</p></li>
+<li><p><strong>proton_dl1_train_file</strong> (<em>str</em>) – FILE path to the proton</p></li>
+<li><p><strong>models_dir</strong> – DIR trained models output path</p></li>
+<li><p><strong>config_file</strong> (<em>str</em>) – Path to a configuration file. If none is given, a standard configuration is applied</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>) – Dictionary containing the (full) source_environment and the slurm_account strings to be passed to the
+sbatch commands
+! NOTE : train_pipe AND dl1_to_dl2 MUST BE RUN WITH THE SAME ENVIRONMENT</p></li>
+<li><p><strong>wait_jobs_dl1</strong> (<em>str</em>) – A string (of chained job_ids separated by ‘,’ and without spaces between each element), containing
+all the job_ids of the merging stage</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>log_train</strong> (<em>dict</em>) – dictionary containing the jobid of the batched job as key and the run command (the lstchain_mc_train
+command with all its corresponding arguments) as value.</p></li>
+<li><p><strong>jobid_train</strong> (<em>str</em>) – jobid of the batched job to be send (for dependencies purposes) to the next stage of the
+workflow (onsite_mc_dl1_to_dl2)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lstmcpipe.stages.train_test_split">
+<span class="sig-prename descclassname"><span class="pre">lstmcpipe.stages.</span></span><span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dirs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_jobid_r0_dl1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_slurm_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lstmcpipe.stages.train_test_split" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_dirs</strong> (<em>dict</em>)</p></li>
+<li><p><strong>batch_configuration</strong> (<em>dict</em>)</p></li>
+<li><p><strong>wait_jobid_r0_dl1</strong> (<em>str</em>)</p></li>
+<li><p><strong>extra_slurm_options</strong> (<em>dict</em>) – Extra slurm options to be passed to the sbatch command</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lstmcpipe.scripts.tests.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">lstmcpipe.scripts.tests package</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lstmcpipe.tests.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">lstmcpipe.tests package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_dl1_to_dl2">lstmcpipe.stages.mc_dl1_to_dl2 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl1_to_dl2.batch_dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">batch_dl1_to_dl2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl1_to_dl2.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">dl1_to_dl2()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_dl2_to_irfs">lstmcpipe.stages.mc_dl2_to_irfs module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_irfs.batch_dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_irfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_irfs.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">dl2_to_irfs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_dl2_to_sensitivity">lstmcpipe.stages.mc_dl2_to_sensitivity module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_sensitivity.batch_dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_sensitivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_dl2_to_sensitivity.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">dl2_to_sensitivity()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_merge_dl1">lstmcpipe.stages.mc_merge_dl1 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_merge_dl1.batch_merge_dl1"><code class="docutils literal notranslate"><span class="pre">batch_merge_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_merge_dl1.merge_dl1"><code class="docutils literal notranslate"><span class="pre">merge_dl1()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_process_dl1">lstmcpipe.stages.mc_process_dl1 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.batch_process_dl1"><code class="docutils literal notranslate"><span class="pre">batch_process_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">r0_to_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.reprocess_dl1"><code class="docutils literal notranslate"><span class="pre">reprocess_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_process_dl1.submit_dl1_jobs"><code class="docutils literal notranslate"><span class="pre">submit_dl1_jobs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_train">lstmcpipe.stages.mc_train module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train.batch_plot_rf_features"><code class="docutils literal notranslate"><span class="pre">batch_plot_rf_features()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train.batch_train_pipe"><code class="docutils literal notranslate"><span class="pre">batch_train_pipe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train.train_pipe"><code class="docutils literal notranslate"><span class="pre">train_pipe()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages.mc_train_test_splitting">lstmcpipe.stages.mc_train_test_splitting module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train_test_splitting.batch_train_test_splitting"><code class="docutils literal notranslate"><span class="pre">batch_train_test_splitting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train_test_splitting.check_empty_dir"><code class="docutils literal notranslate"><span class="pre">check_empty_dir()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.mc_train_test_splitting.train_test_split"><code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lstmcpipe.stages">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">batch_dl1_to_dl2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_irfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">batch_dl2_to_sensitivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_merge_dl1"><code class="docutils literal notranslate"><span class="pre">batch_merge_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_plot_rf_features"><code class="docutils literal notranslate"><span class="pre">batch_plot_rf_features()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_process_dl1"><code class="docutils literal notranslate"><span class="pre">batch_process_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_train_pipe"><code class="docutils literal notranslate"><span class="pre">batch_train_pipe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.batch_train_test_splitting"><code class="docutils literal notranslate"><span class="pre">batch_train_test_splitting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.dl1_to_dl2"><code class="docutils literal notranslate"><span class="pre">dl1_to_dl2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.dl2_to_irfs"><code class="docutils literal notranslate"><span class="pre">dl2_to_irfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.dl2_to_sensitivity"><code class="docutils literal notranslate"><span class="pre">dl2_to_sensitivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.merge_dl1"><code class="docutils literal notranslate"><span class="pre">merge_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.r0_to_dl1"><code class="docutils literal notranslate"><span class="pre">r0_to_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.reprocess_dl1"><code class="docutils literal notranslate"><span class="pre">reprocess_dl1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.train_pipe"><code class="docutils literal notranslate"><span class="pre">train_pipe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstmcpipe.stages.train_test_split"><code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,.  Last updated 23 Dec 2024 16:31.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1750 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Production list &#8212; lstmcpipe 0.11.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=2088e4e3"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'productions';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pipelines &amp; configs generation" href="pipeline.html" />
+    <link rel="prev" title="Analyzers documentation" href="lstmcpipe_user_doc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">lstmcpipe 0.11.3 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lstmcpipe_user_doc.html">Analyzers documentation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Production list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipelines &amp; configs generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/configs_pointings.html">Find and display pointing nodes using lstmcpipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">lstmcpipe commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/lstmcpipe.html">lstmcpipe package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.benchmarks.html">lstmcpipe.benchmarks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/lstmcpipe.config.html">lstmcpipe.config package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lstmcpipe.config.tests.html">lstmcpipe.config.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.hiperta.html">lstmcpipe.hiperta package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/lstmcpipe.io.html">lstmcpipe.io package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lstmcpipe.io.tests.html">lstmcpipe.io.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.plots.html">lstmcpipe.plots package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/lstmcpipe.scripts.html">lstmcpipe.scripts package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lstmcpipe.scripts.tests.html">lstmcpipe.scripts.tests package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.stages.html">lstmcpipe.stages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lstmcpipe.tests.html">lstmcpipe.tests package</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/productions.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Production list</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="production-list">
+<h1>Production list<a class="headerlink" href="#production-list" title="Link to this heading">#</a></h1>
+<p>Find below the list of lstmcpipe productions.
+Real source names are not provided here. To find the actual source name corresponding to its ID used in the prod ID,
+visit the <a class="reference external" href="https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions">LST wiki page</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Request date</p></th>
+<th class="head"><p>Directory name</p></th>
+<th class="head"><p>Prod ID</p></th>
+<th class="head"><p>readme</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2024-12-23</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240918_v0.10.12_allsky_nsb_grid">20240918_v0.10.12_allsky_nsb_grid</a></p></td>
+<td><p>20240122_v0.10.4_prod5_trans80</p></td>
+<td><p># allsky production with NSB grid</p>
+<p>Production for all declination bands with a NSB-wise grid using the following parameters:</p>
+<div class="line-block">
+<div class="line">NSB (p.e.) | Tailcut cleaning values |</div>
+</div>
+<p><a href="#id74"><span class="problematic" id="id75">|------------|</span></a>————————-|
+| 0.07       | (8, 4)                  |
+| 0.14       | (8, 4)                  |
+| 0.22       | (8, 4)                  |
+| 0.38       | (10, 5)                 |
+| 0.50       | (10, 5)                 |
+| 0.81       | (12, 6)                 |
+| 1.25       | (14, 7)                 |
+| 1.76       | (16, 8)                 |
+| 2.34       | (18, 9)                 |</p>
+<p>The GammaDiffuse dataset has been divided into training and test datasets with a 50-50% ratio.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_nsb_levels_configs</span> <span class="pre">-c</span> <span class="pre">PathConfigAllSkyFullSplitDiffuse</span> <span class="pre">--nsb</span> <span class="pre">0.0</span> <span class="pre">0.07</span> <span class="pre">0.14</span> <span class="pre">0.22</span> <span class="pre">0.38</span> <span class="pre">0.50</span> <span class="pre">0.81</span> <span class="pre">1.25</span> <span class="pre">1.76</span> <span class="pre">2.34</span> <span class="pre">-pid</span> <span class="pre">20240918_v0.10.12</span>
+<span class="pre">`</span></code></p>
+<p>## Modifications applied afterwards</p>
+<ul class="simple">
+<li><p>slurm options have been modified to accomodate for the usage of the cluster, adding the <cite>nice</cite> option so that lstmcpipe jobs are sent after lstosa ones and managing jobs times to reduce the time they are hanging</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">python</span> <span class="pre">add_slurm_options.py</span>
+<span class="pre">`</span></code></p>
+<ul class="simple">
+<li><p>The <cite>n_estimators</cite> value has been changed to 50 following recommendations from <a class="github reference external" href="https://github.com/cta-observatory/cta-lstchain/pull/1294">cta-observatory/cta-lstchain#1294</a> in all config except NSB-0.00.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">python</span> <span class="pre">change_estimators.py</span>
+<span class="pre">`</span></code></p>
+<ul class="simple">
+<li><p>The lstchain configs have been modified to include the IRF production config from <a class="github reference external" href="https://github.com/cta-observatory/cta-lstchain/blob/v0.10.12/docs/examples/irf_dl3_tool_config.json">cta-observatory/cta-lstchain</a></p></li>
+</ul>
+<p>### Tree structure</p>
+<p>Finale tree structures for trained models and IRFs are the following:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
+/fefs/aswg/data/mc/IRF/AllSky/
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.00
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.07
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.14
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.22
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.38
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.50
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.81
+├── 20240918_v0.10.12_allsky_nsb_tuning_1.25
+├── 20240918_v0.10.12_allsky_nsb_tuning_1.76
+├── 20240918_v0.10.12_allsky_nsb_tuning_2.34
+│   └── TestingDataset
+│   ├── Gamma
+│   │   ├── dec_2276
+│   │   ├── dec_3476
+│   │   ├── dec_4822
+│   │   ├── dec_6166
+│   │   ├── dec_6676
+│   │   ├── dec_931
+│   │   ├── dec_min_1802
+│   │   ├── dec_min_2924
+│   │   └── dec_min_413
+│   └── GammaDiffuse
+│        ├── dec_2276
+│        ├── dec_3476
+│        ├── dec_4822
+│        ├── dec_6166
+│            ├── dec_6676
+│            ├── dec_931
+│            ├── dec_min_1802
+│            ├── dec_min_2924
+│            └── dec_min_413</p>
+<p>/fefs/aswg/data/models/AllSky
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.00
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.07
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.14
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.22
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.38
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.50
+├── 20240918_v0.10.12_allsky_nsb_tuning_0.81
+├── 20240918_v0.10.12_allsky_nsb_tuning_1.25
+├── 20240918_v0.10.12_allsky_nsb_tuning_1.76
+├── 20240918_v0.10.12_allsky_nsb_tuning_2.34
+<a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-11-12</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240917_v0.10.12_src15_dec_min_2924_tuned">20240917_v0.10.12_src15_dec_min_2924_tuned</a></p></td>
+<td><p>20240917_v0.10.12_src15_dec_min_2924_tuned</p></td>
+<td><p># PROD 20240917_v0.10.12_src15_dec_min_2924_tuned</p>
+<p>I need this production to analyse the LST-1 data of src15 (see <a class="reference external" href="https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions">https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions</a>) with dec 29.24 deg. The median of the NSB standard deviation for this dataset is approximately 2.308 p.e.</p>
+<p>‘’’
+lstmcpipe_generate_config PathConfigAllSkyFullDL1ab –dec_list dec_min_2924 –prod_id 20240917_v0.10.12_src15_dec_min_2924_tuned –kwargs source_prod_id=20240131_allsky_v0.10.5_all_dec_base
+‘’’</p>
+<p>Config for the NSB tuning:</p>
+<dl>
+<dt>“image_modifier”: {</dt><dd><blockquote>
+<div><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 3.843,
+“extra_bias_in_dim_pixels”: 1.07,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 5.178</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>Contact: Lisa N</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-09-06</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240828_v0.10.9_GC_dec_min_2924_tuned">20240828_v0.10.9_GC_dec_min_2924_tuned</a></p></td>
+<td><p>20240906_v0.10.9_GC_dec_min_2924_tuned</p></td>
+<td><p># Prod 20240828_v0.10.9_GC_dec_min_2924_tuned</p>
+<p>## Description of the config</p>
+<dl class="simple">
+<dt>“image_modifier”: {</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.98,
+“extra_bias_in_dim_pixels”: 0.858,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 3.989
+}</p>
+</dd>
+</dl>
+<p>## lstchain_tune_nsb command</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstchain_tune_nsb</span> <span class="pre">--config</span> <span class="pre">standard_lstchain_config.json</span> <span class="pre">--input-mc</span> <span class="pre">/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_min_2924/sim_telarray/node_corsika_theta_69.813_az_217.303_/output_v1.4/simtel_corsika_theta_69.813_az_217.303_run10.simtel.gz</span> <span class="pre">--input-data</span> <span class="pre">/fefs/aswg/data/real/DL1/20220502/v0.9/tailcut84/dl1_LST-1.Run08079.0035.h5</span> <span class="pre">-o</span> <span class="pre">tuned_lstchain_config.json</span>
+<span class="pre">`</span></code></p>
+<p>## lstmcpipe config command</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--dec_list</span> <span class="pre">dec_min_2924</span> <span class="pre">--prod_id</span> <span class="pre">20240906_v0.10.9_GC_dec_min_2924_tuned</span>&#160; <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20240131_allsky_v0.10.5_all_dec_base</span>
+<span class="pre">`</span></code></p>
+<p>Then used the script below to add time and nice options to each step.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">python</span> <span class="pre">add_slurm_options.py</span> <span class="pre">lstmcpipe_config_2024-09-06_PathConfigAllSkyFullDL1ab.yaml</span>
+<span class="pre">`</span></code></p>
+<p>## Why this production is needed?</p>
+<p>To analyze the Galactic Center data at dec_min_2924.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-08-30</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240821_v0.10.11_src14_dec2276_tuned">20240821_v0.10.11_src14_dec2276_tuned</a></p></td>
+<td><p>20240821_v0.10.11_src14_dec2276_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20240821_v0.10.11_src14_tuned</p>
+<p>## Description</p>
+<p>full DL1ab production (with NSB tuning for src14) with lstchain v0.10.11</p>
+<p>NSB level was checked in the following way:</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a>`
+input_mc = /fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_2276/sim_telarray/<a href="#id76"><span class="problematic" id="id77">node_theta_6.000_az_180.000_</span></a>/output_v1.4/simtel_corsika_theta_6.000_az_180.000_run10.simtel.gz</p>
+<p>input_data = /fefs/aswg/data/real/DL1/20240613/v0.10/tailcut84/dl1_LST-1.Run17799.0016.h5</p>
+<p>print(“this config was downloaded (and modified) on %s” % download_config_modified_time)
+config_file = Path(“./lstchain_standard_config.json”)</p>
+<p>lstchain_tune_nsb –config standard_lstchain_config.json –input-mc /fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_2276/sim_telarray/<a href="#id78"><span class="problematic" id="id79">node_theta_6.000_az_180.000_</span></a>/output_v1.4/simtel_corsika_theta_6.000_az_180.000_run10.simtel.gz –input-data /fefs/aswg/data/real/DL1/20240613/v0.10/tailcut84/dl1_LST-1.Run17799.0016.h5 -o tuned_lstchain_config.json</p>
+<p>## Why this config is needed</p>
+<p>Analysis of future data taken on src14</p>
+<p>## Config file creation</p>
+<p>The config file was initially cretaed by using lstmcpipe_generate_config:
+‘’’
+lstmcpipe_generate_config PathConfigAllSkyFullDL1ab –dec_list dec_2276 –prod_id 20240821_v0.10.11_src14_dec2276_tuned –kwargs source_prod_id=20240131_allsky_v0.10.5_all_dec_base</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-08-06</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240727_v0.10.11_src12_tuned">20240727_v0.10.11_src12_tuned</a></p></td>
+<td><p>20240727_v0.10.11_src12_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20240727_v0.10.11_src12_tuned</p>
+<p>## Short description of the config</p>
+<p>full DL1ab production (with NSB tuning for src12) with lstchain v0.10.11</p>
+<p>NSB level was checked in the following way:</p>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a>`
+input_mc_base = Path(“/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/GammaDiffuse/”)
+input_mc = input_mc_base / “dec_min_413/sim_telarray/<a href="#id80"><span class="problematic" id="id81">node_corsika_theta_33.058_az_173.79_</span></a>/output_v1.4/simtel_corsika_theta_33.058_az_173.79_run1.simtel.gz”</p>
+<p>input_data_base = Path(“/fefs/aswg/data/real/DL1/”)
+input_data = input_data_base / “20240701/v0.10/tailcut84/dl1_LST-1.Run17967.0000.h5”</p>
+<p>print(“this config was downloaded (and modified) on %s” % download_config_modified_time)
+config_file = Path(“./lstchain_standard_config.json”)</p>
+<p>!lstchain_tune_nsb –input-mc $input_mc –input-data $input_data –config $config_file
+<a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
+<p>The resulting values are the followings:</p>
+<p><a href="#id15"><span class="problematic" id="id16">``</span></a>`
+this config was downloaded (and modified) on 2024-07-27 10:21:03</p>
+<dl class="simple">
+<dt>Real data:</dt><dd><p>Number of bad pixels (from calibration): 13
+Median of FF pixel charge: 75.561 p.e.
+Median across camera of good pixels’ pedestal std 2.217 p.e.
+Number of pixels beyond 3 std dev of median:    34, (above 2.73 p.e.)</p>
+</dd>
+</dl>
+<p>Good and not too bright pixels: 1812</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 1.297,
+“extra_bias_in_dim_pixels”: 0.385,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 1.536</p>
+</dd>
+</dl>
+<p>These are pasted on the lstchain_config_2024-07-27.json.</p>
+<p>contact: Hideaki Katagiri</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data of src12 with version of lstchain v0.10.11 and with NSB tunning.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">prod_id</span> <span class="pre">=</span> <span class="pre">&quot;20240727_v0.10.11_src12_tuned&quot;</span>
+<span class="pre">dec_list</span> <span class="pre">=</span> <span class="pre">&quot;dec_min_413&quot;</span> <span class="pre">#</span> <span class="pre">declination=-4.13,</span> <span class="pre">Decl.</span> <span class="pre">of</span> <span class="pre">G17.8+16.8</span> <span class="pre">=</span> <span class="pre">-5.145</span>
+<span class="pre">source_prod_id</span> <span class="pre">=</span> <span class="pre">&quot;20240131_allsky_v0.10.5_all_dec_base&quot;</span>
+<span class="pre">!lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--overwrite</span> <span class="pre">--prod_id</span> <span class="pre">$prod_id</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=$source_prod_id</span> <span class="pre">--dec_list</span> <span class="pre">$dec_list</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-07-17</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240716_v0.10.7_src10_dec3476_tuned">20240716_v0.10.7_src10_dec3476_tuned</a></p></td>
+<td><p>20240716_v0.10.7_src10_dec3476_tuned</p></td>
+<td><p># Product Configuration for src10</p>
+<p>## Prod_ID</p>
+<p>20240716_v0.10.7_src10_dec3476_tuned</p>
+<p>##  Description</p>
+<p>Config for reprocessing of Gamma Diffuse MC at declination line of 34.76 deg, based on 20240430_v0.10.4_src9_dec3476_tuned.</p>
+<p>NSB tuning adapted to the observed data of src10.</p>
+<p>## Objective</p>
+<p>Need diffuse MC with tuning for new source: src10</p>
+<p>## Config file creation</p>
+<p>The config file was initially cretaed by using lstmcpipe_generate_config:
+‘’’
+lstmcpipe_generate_config PathConfigAllSkyFullDL1ab  –dec_list dec_3476 –prod_id 20240716_v0.10.7_src10_dec3476_tuned –kwargs source_prod_id=20240430_v0.10.4_src9_dec3476_tuned
+‘’’</p>
+<p>Added image_modifier to tune NSB to src10.
+Manually edited to split dataset similar as 20240430_v0.10.4_src9_dec3476_tuned.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-06-07</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240529_v0.10.11_src4_dense_MC_line">20240529_v0.10.11_src4_dense_MC_line</a></p></td>
+<td><p>20240529_v0.10.11_src4_dense_MC_line</p></td>
+<td><p># Source with dec 6166 at LZA and NSB tuning</p>
+<p>## 20240529</p>
+<p>Production on the full high density line (dec_6166_high_density) with all nodes and with to NSB of the LZA data</p>
+<p>## Short description of the config</p>
+<p>Config for a source src4 with line dec_6166_high_density and NSB tuning corresponding or pedestal std 1.9 pe (reference run 8649, zd=65.5, reference MC simtel_corsika_theta_65.796_az_31.344_run1.simtel.gz)</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.124,
+“extra_bias_in_dim_pixels”: 0.738,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.766</p>
+</dd>
+</dl>
+<p>}</p>
+<p>Only test nodes on the declination line are included</p>
+<p>The config is produced as following:</p>
+<p>{</p>
+<blockquote>
+<div><p>MC_line=’dec_6166_high_density’</p>
+<p>config = paths_config.PathConfigAllSkyFull(‘20240519_v0.10.11_src4_dense_MC_line’, [MC_line])</p>
+<dl class="simple">
+<dt>config.stages = [</dt><dd><p>‘r0_to_dl1’,
+‘merge_dl1’,
+‘train_pipe’,
+‘dl1_to_dl2’]</p>
+</dd>
+</dl>
+<p>_=config.generate()</p>
+<p># mask tests too far from the training nodes
+train_zd=90*u.deg-config.train_configs[MC_line]._training_pointings[‘alt’]
+train_az=config.train_configs[MC_line]._training_pointings[‘az’]</p>
+<p>n_test_points=len(config.test_configs[MC_line]._testing_pointings)
+mask_test=np.zeros(n_test_points,dtype=bool)
+for point in np.arange(n_test_points):</p>
+<blockquote>
+<div><p>zd=90*u.deg-config.test_configs[MC_line]._testing_pointings[‘alt’][point]
+az=config.test_configs[MC_line]._testing_pointings[‘az’][point]</p>
+<dl>
+<dt>for test in np.arange(len(train_zd)):</dt><dd><p>dist=angular_separation(az,zd,train_az[test],train_zd[test])</p>
+<dl class="simple">
+<dt>if dist &lt; 1.*u.deg:</dt><dd><p>print(f”dist {dist} keep {test_zd[test]:6.2f} {zd:6.2f}”)
+mask_test[point]=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p># select only the on line tests
+config.test_configs[MC_line]._testing_pointings=config.test_configs[MC_line]_testing_pointings = config.test_configs[MC_line]._testing_pointings[mask_test]</p>
+</div></blockquote>
+<p>}</p>
+<p><a href="#id17"><span class="problematic" id="id18">``</span></a><a href="#id19"><span class="problematic" id="id20">`</span></a></p>
+<p>Plot:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">config.plot_pointings()</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-05-17</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240430_v0.10.4_src9_dec3476_tuned">20240430_v0.10.4_src9_dec3476_tuned</a></p></td>
+<td><p>20240430_v0.10.4_src9_dec3476_tuned</p></td>
+<td><p># New Product Configuration for src9</p>
+<p>## Prod_ID</p>
+<p>20240430_v0.10.4_src9_dec3476_tuned</p>
+<p>##  Description</p>
+<p>Config for training RF splitting Gamma Diffuse MC datasets in halves for the declination line of 34.76 deg.</p>
+<p>NSB tuning adapted to the observed data of src9.</p>
+<p>## Objective</p>
+<p>Prepare full enclosure IRFs for src9.</p>
+<p>## Config file creation</p>
+<dl class="simple">
+<dt>The config file was initially cretaed by using lstmcpipe_generate_config:</dt><dd><p>lstmcpipe_generate_config PathConfigAllSkyFull –prod_id 20240430_v0.10.4_src9_dec3476_tuned –dec_list dec_3476</p>
+</dd>
+</dl>
+<p>Then, some manually changes were added in order to split the datasets and add the specific NSB tuning configuration parameters.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-05-03</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240426_v0.10.9_src3_dec3476_4822_tunedNSB">20240426_v0.10.9_src3_dec3476_4822_tunedNSB</a></p></td>
+<td><p>20240426_v0.10.9_src3_dec3476_4822_tunedNSB</p></td>
+<td><p># Source with dec 3476/4822 and NSB tuning for moon data (x3-4 the previous production, which was made to reproduce the specific dark background of the source due to its proximity to the galactic plane). The mean_diffuse_nsb_std for this dataset is approximately 3 p.e.</p>
+<p>## Prod_ID
+20240426_v0.10.9_src3_dec3476_4822_tunedNSB</p>
+<p>## 20240426
+lstmcpipe_generate_config PathConfigAllSkyFull –prod_id 20240426_v0.10.9_src3_dec3476_4822_tunedNSB –dec_list dec_3476 dec_4822</p>
+<p>## Short description of the config</p>
+<p>Config for a source with dec within 3476/4822 and NSB tuning:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“image_modifier”: {</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 6.974,
+“extra_bias_in_dim_pixels”: 1.825,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 4.195</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>## Why this config is needed</p>
+<p>See wiki page (src 3)
+<a class="reference external" href="https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions">https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions</a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-03-07</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240122_v0.10.4_prod5_trans_80">20240122_v0.10.4_prod5_trans_80</a></p></td>
+<td><p>20240122_v0.10.4_prod5_trans80</p></td>
+<td><p># 20240122_v0.10.4_prod5_trans80</p>
+<p>20 degrees for performance study</p>
+<p>lstmcpipe_generate_config PathConfigProd5Trans80 –prod_id 20240122_v0.10.4_prod5_trans80</p>
+<p>Contact : Mathieu de Bony, Léo Le Moigne, David Sanchez</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-02-29</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240229_nsb14">20240229_nsb14</a></p></td>
+<td><p>20240229_dec34_nsb14</p></td>
+<td><p>DL1a=&gt; Production for the dec_3476 line and high NSB conditions,
+with cleaning levels (14, 7)</p>
+<p>Command:</p>
+<p>lstmcpipe_generate_config PathConfigAllSkyFullDL1ab –dec_list dec_3476 –prod_id 20240229_dec34_nsb14 –kwargs source_prod_id=20240131_allsky_v0.10.5_all_dec_base</p>
+<p>Then I modified in the yaml file the versions of lstchain and lstmcpipe to
+be used</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-02-26</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240126_v0.10.4_src6_dec2276_tuned">20240126_v0.10.4_src6_dec2276_tuned</a></p></td>
+<td><p>20240126_v0.10.4_src6_dec2276_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20240126_v0.10.4_src6_dec2276_tuned</p>
+<p>## Short description of the config</p>
+<p>Config for the processing of MC at dec_2276 with NSB tuning to src6 and src-dependent configuration using a specific NSB tunning for the source.</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data at declination 22.76 with version of lstchain v0.10.4 and with new tunning for new source: src6.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20240126_v0.10.4_src6_dec2276_tuned</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20230901_v0.10.4_allsky_base_prod</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-02-19</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240219_allsky_v0.10.7_all_dec_srcdep_base">20240219_allsky_v0.10.7_all_dec_srcdep_base</a></p></td>
+<td><p>20240219_allsky_v0.10.7_all_dec_srcdep_base</p></td>
+<td><p># Prod 20240219_allsky_v0.10.7_all_dec_srcdep_base</p>
+<p>Base production for all declinations lines with lstchain v0.10.7 &amp; source-dependent approach</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllTrainTestDL1b</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">dec_4822</span> <span class="pre">dec_6166</span> <span class="pre">dec_6676</span> <span class="pre">dec_min_1802</span> <span class="pre">dec_min_413</span> <span class="pre">dec_931</span> <span class="pre">dec_min_2924</span> <span class="pre">dec_3476</span> <span class="pre">--prod_id</span> <span class="pre">20240219_allsky_v0.10.7_all_dec_srcdep_base</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20240131_allsky_v0.10.5_all_dec_base</span>
+<span class="pre">`</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstchain_dump_config</span> <span class="pre">-o</span> <span class="pre">lstchain_config_2024-02-19_srcdep.json</span> <span class="pre">--mc</span> <span class="pre">--update-with</span> <span class="pre">lstchain_src_dep_config.json</span>
+<span class="pre">`</span></code></p>
+<p>contact: Seiya N.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-02-07</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240131_allsky_v0.10.5_all_dec_base">20240131_allsky_v0.10.5_all_dec_base</a></p></td>
+<td><p>20240131_allsky_v0.10.5_all_dec_base</p></td>
+<td><p># Prod 20240131_allsky_v0.10.5_all_dec_base</p>
+<p>Base production for all declinations lines with lstchain v0.10.5</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20240131_allsky_v0.10.5_all_dec_base</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">dec_4822</span> <span class="pre">dec_6166</span> <span class="pre">dec_6676</span> <span class="pre">dec_min_1802</span> <span class="pre">dec_min_413</span>
+<span class="pre">`</span></code></p>
+<p>contact: Thomas V.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2024-02-06</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240206_v0.10.5_lst_school_dummy_prod">20240206_v0.10.5_lst_school_dummy_prod</a></p></td>
+<td><p>20240206_v0.10.5_lst_school_dummy_prod</p></td>
+<td><p># PROD 20240206_v0.10.5_lst_school_dummy_prod</p>
+<p>I need this production for the LST school</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">--prod_id</span> <span class="pre">20240206_v0.10.5_lst_school_dummy_prod</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20240131_allsky_v0.10.5_all_dec_base</span>
+<span class="pre">`</span></code></p>
+<p>contact: Thomas V.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2024-02-05</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20240235_v0.10.5_dec_931_dec_min_2924_dec_3476">20240235_v0.10.5_dec_931_dec_min_2924_dec_3476</a></p></td>
+<td><p>20240131_allsky_v0.10.5_all_dec_base</p></td>
+<td><p># Prod 20240235_v0.10.5_dec_931_dec_min_2924_dec_3476</p>
+<p>Base prod with missing declinations in <cite>20240131_allsky_v0.10.5_all_dec_base</cite></p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">/fefs/aswg/software/conda/etc/profile.d/conda.sh</span>
+<span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">lstchain-v0.10.5</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20240131_allsky_v0.10.5_all_dec_base</span> <span class="pre">--dec_list</span> <span class="pre">dec_931</span> <span class="pre">dec_min_2924</span> <span class="pre">dec_3476</span> <span class="pre">`</span></code></p>
+<p>contact: Thomas V.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-11-06</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20231106_v0.9.12_base_dl1_dec_931_min-2924_min-1802_6166">20231106_v0.9.12_base_dl1_dec_931_min-2924_min-1802_6166</a></p></td>
+<td><p>20231106_v0.9.12_base_dl1_dec_931_min-2924_min-1802_6166</p></td>
+<td><p># Prod 20231106_v0.9.12_base_dl1_dec_931_min-2924_min-1802_6166</p>
+<p>Base DL1 prod for missing declination in <cite>20221215_v0.9.12_base_prod</cite></p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20231106_v0.9.12_base_dl1_dec_931_min-2924_min-1802_6166</span> <span class="pre">--dec_list</span> <span class="pre">dec_931</span> <span class="pre">dec_min_2924</span> <span class="pre">dec_min_1802</span> <span class="pre">dec_6166</span>
+<span class="pre">`</span></code></p>
+<p>contact: Thomas Vuillaume</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-10-27</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20231017_v0.10.4_seasonal_atmospheres_summer">20231017_v0.10.4_seasonal_atmospheres_summer</a></p></td>
+<td><p>20231017_v0.10.4_seasonal_atmospheres_summer</p></td>
+<td><p># 20231017_v0.10.4_seasonal_atmospheres_summer</p>
+<p>Full production of a test node simulated with a summer atmospheric profile.
+Reconstructed with</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>training datasets produced with the same atmosphere as for the production.</p></li>
+<li><p>training datasets produced with the standard average winter atmospheric profile.</p></li>
+</ul>
+</div></blockquote>
+<p>The goal is to estimate the systematics introduced by using the same average winter atmospheric profile
+in order to analyse all LST data.</p>
+<p>The config file was created manually, inspired by the configurations of the production 20230927_v0.10.4_crab_tuned.</p>
+<p>Contact : Georgios Voutsinas</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-10-24</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20231024_v0.10.4_base_dec_min_2924_min_1802_6166">20231024_v0.10.4_base_dec_min_2924_min_1802_6166</a></p></td>
+<td><p>20231024_v0.10.4_base_dec_min_2924_min_1802_6166</p></td>
+<td><p># Prod 20231024_v0.10.4_base_dec_min_2924_min_1802_6166</p>
+<p>Base prod for missing declination in <cite>20230901_v0.10.4_base_prod</cite></p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20231024_v0.10.4_base_dec_min_2924_min_1802_6166</span> <span class="pre">--dec_list</span> <span class="pre">dec_min_2924</span> <span class="pre">dec_min_1802</span> <span class="pre">dec_6166</span>
+<span class="pre">`</span></code></p>
+<p>contact: Thomas Vuillaume</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-09-28</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230927_v0.10.4_crab_tuned">20230927_v0.10.4_crab_tuned</a></p></td>
+<td><p>20230927_v0.10.4_crab_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20230927_v0.10.4_crab_tuned</p>
+<p>## Short description of the config</p>
+<p>full DL1ab production (with NSB tuning for Crab) with lstchain v0.10.4</p>
+<p>NSB level was checked in the following way:</p>
+<p>input_mc = Path(“/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/GammaDiffuse/dec_2276/sim_telarray/<a href="#id82"><span class="problematic" id="id83">node_corsika_theta_6.000_az_180.000_</span></a>/output_v1.4/simtel_corsika_theta_6.000_az_180.000_run1.simtel.gz”)
+input_data = Path(“/fefs/aswg/data/real/DL1/20221201/v0.9/tailcut84/dl1_LST-1.Run11282.0000.h5”)
+print(“this config is commit ac7d379 on Sep 14, 2023 “)
+config_file = Path(“./lstchain_standard_config.json”)
+!lstchain_tune_nsb –input-mc $input_mc –input-data $input_data –config $config_file</p>
+<p>The resulting values are the followings:</p>
+<p>this config is commit ac7d379 on Sep 14, 2023
+Real data: median across camera of good pixels’ pedestal std 2.633 p.e.
+Number of pixels beyond 3 std dev of median: 34, (above 3.82 p.e.)
+Good and not too bright pixels: 1811</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.197,
+“extra_bias_in_dim_pixels”: 0.82,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.88</p>
+</dd>
+</dl>
+<p>}</p>
+<p>These are pasted on the lstchain_config_2023-09-27.json.</p>
+<p>contact: Hideaki Katagiri</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data of Crab with version of lstchain v0.10.4 and with tunning.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">prod_id</span> <span class="pre">=</span> <span class="pre">&quot;20230927_v0.10.4_crab_tuned&quot;</span>
+<span class="pre">dec_list</span> <span class="pre">=</span> <span class="pre">&quot;dec_2276&quot;</span>
+<span class="pre">source_prod_id</span> <span class="pre">=</span> <span class="pre">&quot;20230901_v0.10.4_allsky_base_prod&quot;</span>
+<span class="pre">!lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">$prod_id</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=$source_prod_id</span> <span class="pre">--dec_list</span> <span class="pre">$dec_list</span> <span class="pre">--overwrite</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-09-25</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230925_v0.10.4_src3_dec3476_4822_tuned">20230925_v0.10.4_src3_dec3476_4822_tuned</a></p></td>
+<td><p>20230925_v0.10.4_src3_dec3476_4822_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20230925_v0.10.4_src3_dec3476_4822_tuned</p>
+<p>## Short description of the config</p>
+<p>full DL1ab production (dec3476 and dec4822 with NSB tuning for src3) with lstchain v0.10.4</p>
+<p>contact: Seiya Nozaki</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data at declination 34.76 and 48.22 with version of lstchain v0.10.4 and with tunning for src3.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20230925_v0.10.4_src3_dec3476_4822_tuned</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20230901_v0.10.4_allsky_base_prod</span> <span class="pre">--dec_list</span> <span class="pre">dec_3476</span> <span class="pre">dec_4822</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-09-01</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230901_v0.10.4_allsky_base_prod">20230901_v0.10.4_allsky_base_prod</a></p></td>
+<td><p>20230901_v0.10.4_allsky_base_prod</p></td>
+<td><p># New Prod Config</p>
+<p>## 20230901_v0.10.4_base_prod</p>
+<p>## Short description of the config</p>
+<p>Full allsky production with lstchain v0.10.4 standard settings (<a class="github reference external" href="https://github.com/cta-observatory/cta-lstchain/blob/v0.10.4/lstchain/data/lstchain_standard_config.json">cta-observatory/cta-lstchain</a>)
+Only change to the config is the added <cite>integration_correction</cite>, that is needed for
+simulations.</p>
+<p>## Why this config is needed</p>
+<p>There have been datamodel-changes in the transition from lstchain 0.9 to 0.10, which is why a new production is in order.
+Also old <cite>lstchain</cite> configs dont necessarily work with the new versions (e.g. due to floating point <cite>verbose</cite> values).</p>
+<p>This request includes all declination lines and no NSB-tuning in order act as a new baseline.
+For the same reason all processing steps are included.
+That should make it possible to directly compare the performance to the older <cite>20230127_v0.9.12_base_prod_az_tel</cite> production.</p>
+<p>For Crab or other high-NSB sources, a <cite>dl1ab</cite> reprocessing or another podcution will thus be needed.</p>
+<p>## Command to produce
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20230901_v0.10.4_allsky_base_prod</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">dec_931</span> <span class="pre">dec_min_413</span> <span class="pre">dec_6676</span> <span class="pre">dec_4822</span> <span class="pre">dec_3476</span>
+<span class="pre">`</span></code>
+to produce the list of steps.
+Then change <cite>lstchain</cite> version in the <cite>mcpipe</cite> config.
+For the lstchain config, use the standard config of that version from here:
+<a class="github reference external" href="https://github.com/cta-observatory/cta-lstchain/blob/v0.10.4/lstchain/data/lstchain_standard_config.json">cta-observatory/cta-lstchain</a>
+and set <cite>apply_integration_correction</cite> to <cite>true</cite></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-08-30</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230829_src5_dec3476_v0.10_tuned">20230829_src5_dec3476_v0.10_tuned</a></p></td>
+<td><p>20230829_src5_dec3476_v0.10_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20230829_src5_dec3476_v0.10_tuned</p>
+<p>## Short description of the config</p>
+<p>dec_3476 with NSB tuning to src5, src-dependent and lstchain v0.10 configuration.</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data at declination 34.76 with version of lstchain v0.10 and with tunning for src5.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20230829_src5_dec3476_v0.10_tuned</span>&#160; <span class="pre">--dec_list</span> <span class="pre">dec_3476</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-06-19</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230601_v0.9.13_src7_darkNSB">20230601_v0.9.13_src7_darkNSB</a></p></td>
+<td><p>20230601_v0.9.13_src7_darkNSB</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20230601_v0.9.13_src7_darkNSB</p>
+<p>## Short description of the config</p>
+<p>Reprocess production of 20230601_v0.9.13_dec_4822_dec_6166 matching the NSB noise to source 7 in dark conditions.</p>
+<p>## Why this config is needed</p>
+<p>Add NSB noise to match the NSB in the FoV of source 7 in the production 20230601_v0.9.13_dec_4822_dec_6166</p>
+<p>## Command used to produce the lstmcpipe config</p>
+<p><cite>lstmcpipe_generate_config PathConfigAllSkyFullDL1ab –dec_list dec_4822 dec_6166 –prod_id 20230601_v0.9.13_src7_darkNSB –kwargs source_prod_id=20230601_v0.9.13_dec_4822_dec_6166</cite></p>
+<p>Also, I increased the memory for the DL2 to IRF stage o 100 GB following the fix memory issue in prod. 20230329_v0.9.13_src4_full_line.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-06-05</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230529_v0.9.13_src4_full_line">20230529_v0.9.13_src4_full_line</a></p></td>
+<td><p>20230529_v0.9.13_src4_full_line</p></td>
+<td><p># Source with dec 6166 at LZA and NSB tuning</p>
+<p>## 20230529</p>
+<p>Production on the full node with all nodes and with to NSB of the LZA data</p>
+<p>## Short description of the config</p>
+<p>Config for a source src4 with dec 6166 and NSB tuning corresponding or pedestal std 1.9 pe (reference run 8649, zd=65.5, reference MC simtel_corsika_theta_65.796_az_31.344_run1.simtel.gz)</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.124,
+“extra_bias_in_dim_pixels”: 0.738,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.766</p>
+</dd>
+</dl>
+<p>}</p>
+<p>Only test nodes on the declination line are included</p>
+<p>The config is produced as following:</p>
+<p>{</p>
+<blockquote>
+<div><p>config = paths_config.PathConfigAllSkyFull(‘20230529_v0.9.13_src4_full_line’, [‘dec_6166’])
+config.generate()
+# mask test outside the line
+n_test_points=len(config.test_configs[‘dec_6166’]._testing_pointings)
+mask_test=np.zeros(n_test_points,dtype=bool)
+for point in np.arange(n_test_points):</p>
+<blockquote>
+<div><p>zd=90*u.deg-config.test_configs[‘dec_6166’]._testing_pointings[‘alt’][point]
+az=config.test_configs[‘dec_6166’]._testing_pointings[‘az’][point]</p>
+<dl>
+<dt>for test in np.arange(len(test_zd)):</dt><dd><p>dist=angular_separation(az,zd,test_az[test]*u.deg,test_zd[test]*u.deg)</p>
+<dl class="simple">
+<dt>if dist &lt; 1.*u.deg:</dt><dd><p>mask_test[point]=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p># select only the on line tests
+config.test_configs[‘dec_6166’]._testing_pointings=config.test_configs[‘dec_6166’]._testing_pointings = config.test_configs[‘dec_6166’]._testing_pointings[mask_test]
+# generate again
+config.generate()</p>
+<p>config.save_yml(‘lstmcpipe_config_2023-05-29_PathConfigAllSkyFull.yaml’, overwrite=True)</p>
+</div></blockquote>
+<p>}</p>
+<p><a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a></p>
+<p>Plot:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">config.plot_pointings()</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-06-02</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230601_v0.9.13_dec_4822_dec_6166">20230601_v0.9.13_dec_4822_dec_6166</a></p></td>
+<td><p>20230601_v0.9.13_dec_4822_dec_6166</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20230601_v0.9.13_dec_4822_dec_6166</p>
+<p>## Short description of the config</p>
+<p>Create a production with lstchain-v0.9.13 with all testing nodes for dec_4822 and dec_6166. The stage r0_to_dl1 is the only stage used because this production will be used as the base prod. to latter tune the NSB.</p>
+<p>## Why this config is needed</p>
+<p>Processing of source 7 with MC processed with lstchain-v0.9.13 for dec. bands dec_4822 and dec_6166 with all available testing nodes.</p>
+<p>## Command used to produce the lstmcpipe config</p>
+<p><cite>lstmcpipe_generate_config PathConfigAllSkyFull –prod_id 20230601_v0.9.13_dec_4822_dec_6166 –dec_list dec_4822 dec_6166</cite></p>
+<p>Also, I removed the stages merge_dl1, train_pipe, dl1_to_dl2 and dl2_to_irfs from the lstmcpipe config file.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-05-18</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230517_v0.9.13_large_offset_crab_tuned">20230517_v0.9.13_large_offset_crab_tuned</a></p></td>
+<td><p>20230517_v0.9.13_large_offset_crab_tuned</p></td>
+<td><p># 20230517_v0.9.13_large_offset_crab_tuned</p>
+<p>DL1ab step to apply NSB tuning for Crab gamma diffuse MC.</p>
+<p>lstchain config taken from ‘20221027_v0.9.9_crab_tuned’</p>
+<p>Contact : Mathieu de Bony, Mathieu de Bony, Léo Le Moigne, David Sanchez</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-05-17</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230517_v0.9.13_large_offset">20230517_v0.9.13_large_offset</a></p></td>
+<td><p>20230517_v0.9.13_large_offset</p></td>
+<td><p># 20230517_v0.9.13_large_offset</p>
+<p>DL1 production of the test node for IRF using gamma diffuse MC</p>
+<p>lstchain config taken from ‘20230127_v0.9.12_base_prod_az_tel’</p>
+<p>Contact : Mathieu de Bony, Léo Le Moigne, David Sanchez</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-04-28</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230428_src_dec2276_tuned_nsb_az_tel">20230428_src_dec2276_tuned_nsb_az_tel</a></p></td>
+<td><p>20230428_src_dec2276_tuned_nsb_az_tel</p></td>
+<td><p># New Prod Config</p>
+<p>## 20230428</p>
+<p>## Short description of the config</p>
+<p>Config for a galactic source with dec 22.47 and NSB tuning.
+Started from prod <cite>20230315_src_dec2276_tuned_nsb</cite> with new lstchain config.</p>
+<p>## Why this config is needed</p>
+<p>The feature <cite>az_tel</cite> must be used to analyse real data.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-04-20</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230315_src_dec2276_tuned_nsb">20230315_src_dec2276_tuned_nsb</a></p></td>
+<td><p>20230315_src_dec2276_tuned_nsb</p></td>
+<td><p># New Prod Config</p>
+<p>## 20230315</p>
+<p>## Short description of the config</p>
+<p>Config for a galactic source with dec 22.47 and NSB tuning:</p>
+<dl>
+<dt>“image_modifier”: {</dt><dd><blockquote>
+<div><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 1.309,
+“extra_bias_in_dim_pixels”: 0.54,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 1.79</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>The NSB parameters have been computed by using lstchain script <cite>lstchain_tune_nsb</cite> with configuration file <cite>lstchain_config_v0.9.4_from2022onwards.json</cite>.</p>
+<p>The configuration file for lstchain and lstmcpipe included in this directory have been produced by running
+<a href="#id25"><span class="problematic" id="id26">``</span></a>`
+source /fefs/aswg/software/conda/etc/profile.d/conda.sh</p>
+<p>conda activate lstchain-v0.9.13</p>
+<p>lstmcpipe_generate_config PathConfigAllSkyFullDL1ab –dec_list dec_2276 –prod_id 20230315_src_dec2276_tuned_nsb –kwargs source_prod_id=20230315_src_dec2276_tuned_nsb
+<a href="#id27"><span class="problematic" id="id28">``</span></a><a href="#id29"><span class="problematic" id="id30">`</span></a></p>
+<p>## Why this config is needed</p>
+<p>Processing of data taken from this galactic source which has a particular NSB level.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-04-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230414_v0.9.13_dec_931_az_tel">20230414_v0.9.13_dec_931_az_tel</a></p></td>
+<td><p>20230414_v0.9.13_dec_931_az_tel</p></td>
+<td><p># prod 20230414_v0.9.13_dec_931_az_tel</p>
+<p>Reprocessing of faulty dec_931.
+This production should be used instead of <cite>20230127_v0.9.12_base_prod_az_tel</cite> for dec_931.</p>
+<p>See related issues:
+- <a class="github reference external" href="https://github.com/cta-observatory/lstmcpipe/issues/371">cta-observatory/lstmcpipe#371</a>
+- <a class="github reference external" href="https://github.com/cta-observatory/lst-sim-config/issues/55">cta-observatory/lst-sim-config#55</a></p>
+<p>The config was generated using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20230414_v0.9.13_dec_931_az_tel</span> <span class="pre">--output</span> <span class="pre">lstmcpipe_config.yml</span> <span class="pre">--overwrite</span> <span class="pre">--lstchain_conf</span> <span class="pre">lstchain_config.json</span> <span class="pre">--dec_list</span> <span class="pre">dec_931</span>
+<span class="pre">`</span></code></p>
+<p>After failure of the merging step, the faulty DL1 files were removed to allow proper merging and the processing was started again, commenting the r0_to_dl1 step.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-04-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230127_v0.9.12_base_prod_az_tel">20230127_v0.9.12_base_prod_az_tel</a></p></td>
+<td><p>20230127_v0.9.12_base_prod_az_tel</p></td>
+<td><p># New Prod Config</p>
+<p>## template_prod</p>
+<p>## Short description of the config</p>
+<p>Full MC / model dataset with lstchain v0.9.12 standard settings / az instead of sin(az) in training features.</p>
+<p>## Why this config is needed</p>
+<p>Processing standard AGN data (+Crab) with recent lstchain (after the discussion in slack). Last full production with Models date from May 2022.
+For now requesting a standard ‘un-tuned’ production to evaluate blind reconstruction and to test how a ‘bad NSB setting’ can spoil the SED.</p>
+<p>Declination tracks needed:</p>
+<p>dec_2276
+dec_3476
+dec_4822
+dec_6676
+dec_931
+dec_min_413</p>
+<p>Command to produce this request:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20230127_v0.9.12_base_prod_az_tel</span> <span class="pre">--output</span> <span class="pre">lstmcpipe_config.yml</span> <span class="pre">--overwrite</span> <span class="pre">--lstchain_conf</span> <span class="pre">lstchain_config.json</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">dec_3476</span> <span class="pre">dec_4822</span> <span class="pre">dec_6676</span> <span class="pre">dec_931</span> <span class="pre">dec_min_413</span>
+<span class="pre">`</span></code></p>
+<p>and then replace <cite>sin_az_tel</cite> with <cite>az_tel</cite> in lstchain config</p>
+<p>## Note on dec_931
+16/04/2023, T. Vuillaume.</p>
+<p>dec_931 from this prod is faulty and thus should not be used!
+Please use prod <cite>20230414_v0.9.13_dec_931_az_tel</cite> instead.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-04-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221215_v0.9.12_base_prod">20221215_v0.9.12_base_prod</a></p></td>
+<td><p>20221215_v0.9.12_base_prod</p></td>
+<td><p># New Prod Config</p>
+<p>## template_prod</p>
+<p>## Short description of the config</p>
+<p>Full MC / model dataset with lstchain v0.9.12 standard settings</p>
+<p>## Why this config is needed</p>
+<p>Processing standard AGN data (+Crab) with recent lstchain (after the discussion in slack). Last full production with Models date from May 2022.
+For now requesting a standard ‘un-tuned’ production to evaluate blind reconstruction and to test how a ‘bad NSB setting’ can spoil the SED.</p>
+<p>Declination tracks needed:</p>
+<p>dec_2276
+dec_3476
+dec_4822
+dec_6676
+dec_931
+dec_min_413</p>
+<p>Command to produce this request:</p>
+<p>&gt;&gt; lstmcpipe_generate_config PathConfigAllSkyFull –prod_id 20221215_v0.9.12_base_prod –output lstmcpipe_config.yml –overwrite –lstchain_conf lstchain_config.json –dec_list dec_2276 dec_3476 dec_4822 dec_6676 dec_931 dec_min_413</p>
+<p>## Note on dec_931
+16/04/2023, T. Vuillaume.</p>
+<p>dec_931 from this prod is faulty and thus should not be used!
+Please use prod <cite>20230414_v0.9.13_dec_931_az_tel</cite> instead.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2023-04-05</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230329_v0.9.13_src4_full_line">20230329_v0.9.13_src4_full_line</a></p></td>
+<td><p>20230329_v0.9.13_src4_full_line</p></td>
+<td><p># Source with dec 6166 at LZA and NSB tuning</p>
+<p>## 20230329</p>
+<p>Production on the full node (but still with some nodes missing) and with to NSB of the LZA data</p>
+<p>## Short description of the config</p>
+<p>Config for a source src4 with dec 6166 and NSB tuning corresponding or pedestal std 1.9 pe (reference run 8649, zd=65.5, reference MC simtel_corsika_theta_65.796_az_31.344_run1.simtel.gz)</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.124,
+“extra_bias_in_dim_pixels”: 0.738,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.766</p>
+</dd>
+</dl>
+<p>}</p>
+<p>Only test nodes on the declination line are included</p>
+<p><a href="#id32"><span class="problematic" id="id33">``</span></a><a href="#id34"><span class="problematic" id="id35">`</span></a></p>
+<p>Plot:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">config.plot_pointings()</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2023-01-25</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20230124_src6_dec2276_tuned">20230124_src6_dec2276_tuned</a></p></td>
+<td><p>20230124_src6_dec2276_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20230124_src6_dec2276_tuned</p>
+<p>## Short description of the config</p>
+<p>dec_2276 with NSB tuning to src6 and src-dependent configuration.</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data at declination 22.76 with version of lstchain v0.9.12 and with new tunning for new source: src6.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20230124_src6_dec2276_tuned</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20221215_v0.9.12_base_prod</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-12-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221212_v0.9.6_src4_high_NSB_LZA">20221212_v0.9.6_src4_high_NSB_LZA</a></p></td>
+<td><p>20221212_v0.9.6_src4_high_NSB_LZA</p></td>
+<td><p># Source with dec 6166 at LZA and NSB tuning</p>
+<p>## 20221212</p>
+<p>LZA production as 20221025_src4_high_NSB_LZA but with lstchain release 0.9.6</p>
+<p>## Short description of the config</p>
+<p>Config for a source src4 with dec 6166 and NSB tuning corresponding or pedestal std 1.9 pe (reference run 8649, zd=65.5, reference MC simtel_corsika_theta_65.796_az_31.344_run1.simtel.gz)</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.124,
+“extra_bias_in_dim_pixels”: 0.738,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.766</p>
+</dd>
+</dl>
+<p>}</p>
+<p>Config generated with:
+<a href="#id36"><span class="problematic" id="id37">``</span></a>`
+from lstmcpipe.config import paths_config
+import astropy.units as u</p>
+<p>config = paths_config.PathConfigAllSkyFullDL1ab(‘20221212_v0.9.6_src4_high_NSB_LZA’, ‘20221027_v0.9.9_base_prod’, [‘dec_6166’])</p>
+<p>mask_train = config.train_configs[‘dec_6166’]._training_pointings[‘alt’] &lt; 38 <a href="#id38"><span class="problematic" id="id39">*</span></a>u.deg
+mask_test = config.test_configs[‘dec_6166’]._testing_pointings[‘alt’] &lt; 38 <a href="#id40"><span class="problematic" id="id41">*</span></a>u.deg</p>
+<p>config.test_configs[‘dec_6166’]._testing_pointings = config.test_configs[‘dec_6166’]._testing_pointings[mask_test]
+config.train_configs[‘dec_6166’]._training_pointings = config.train_configs[‘dec_6166’]._training_pointings[mask_train]</p>
+<p>config.generate()</p>
+<p>config.save_yml(‘lstmcpipe_config_2022-11-02_PathConfigAllSkyFullDL1ab.yaml’, overwrite=True)</p>
+<p><a href="#id42"><span class="problematic" id="id43">``</span></a><a href="#id44"><span class="problematic" id="id45">`</span></a></p>
+<p>Plot:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">config.plot_pointings()</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-12-08</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221025_src4_high_NSB_LZA">20221025_src4_high_NSB_LZA</a></p></td>
+<td><p>20221025_src4_high_NSB_LZA</p></td>
+<td><p># Source with dec 6166 at LZA and NSB tuning</p>
+<p>## 20221025</p>
+<p>LZA production: only nodes with zd&gt; 52 deg are processed both for training and for test</p>
+<p>## Short description of the config</p>
+<p>Config for a source src4 with dec 6166 and NSB tuning corresponding or pedestal std 1.9 pe (reference run 8649, zd=65.5, reference MC simtel_corsika_theta_65.796_az_31.344_run1.simtel.gz)</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 2.124,
+“extra_bias_in_dim_pixels”: 0.738,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.766</p>
+</dd>
+</dl>
+<p>}</p>
+<p>Config generated with:
+<a href="#id46"><span class="problematic" id="id47">``</span></a>`
+from lstmcpipe.config import paths_config
+import astropy.units as u</p>
+<p>config = paths_config.PathConfigAllSkyFullDL1ab(‘20221025_src4_high_NSB_LZA’, ‘20221027_v0.9.9_base_prod’, [‘dec_6166’])</p>
+<p>mask_train = config.train_configs[‘dec_6166’]._training_pointings[‘alt’] &lt; 38 <a href="#id48"><span class="problematic" id="id49">*</span></a>u.deg
+mask_test = config.test_configs[‘dec_6166’]._testing_pointings[‘alt’] &lt; 38 <a href="#id50"><span class="problematic" id="id51">*</span></a>u.deg</p>
+<p>config.test_configs[‘dec_6166’]._testing_pointings = config.test_configs[‘dec_6166’]._testing_pointings[mask_test]
+config.train_configs[‘dec_6166’]._training_pointings = config.train_configs[‘dec_6166’]._training_pointings[mask_train]</p>
+<p>config.generate()</p>
+<p>config.save_yml(‘lstmcpipe_config_2022-11-02_PathConfigAllSkyFullDL1ab.yaml’, overwrite=True)</p>
+<p><a href="#id52"><span class="problematic" id="id53">``</span></a><a href="#id54"><span class="problematic" id="id55">`</span></a></p>
+<p>Plot:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">config.plot_pointings()</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-12-01</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221128_src5_dec3476_tuned">20221128_src5_dec3476_tuned</a></p></td>
+<td><p>20221128_src5_dec3476_tuned</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20221128_src5_dec3476_tuned</p>
+<p>## Short description of the config</p>
+<p>dec_3476 with NSB tuning to src5 and src-dependent configuration.</p>
+<p>## Why this config is needed</p>
+<p>Reprocess the data at declination 34.76 with version of lstchain v0.9.9 and with new tunning for new source: src5.</p>
+<p>## Other information</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20221128_src5_dec3476_tuned</span>&#160; <span class="pre">--dec_list</span> <span class="pre">dec_3476</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20221027_v0.9.9_base_prod</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-11-08</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221104_src3_dec3476_4822_tuned">20221104_src3_dec3476_4822_tuned</a></p></td>
+<td><p>20221104_src3_dec3476_4822_tuned</p></td>
+<td><p># 20221104_src3_dec3476_4822_tuned</p>
+<p>full DL1ab production (dec3476 and dec4822 with NSB tuning for src3) with lstchain v0.9.9</p>
+<p>## command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20221104_src3_dec3476_4822_tuned</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20221027_v0.9.9_base_prod</span> <span class="pre">--dec_list</span> <span class="pre">dec_3476</span> <span class="pre">dec_4822</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-11-08</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221108_galsource_min_413_tuned_nsb">20221108_galsource_min_413_tuned_nsb</a></p></td>
+<td><p>20221108_galsource_min_413_tuned_nsb</p></td>
+<td><p># New Prod Config</p>
+<p>## Prod_ID</p>
+<p>20221108_galsource_min_413_tuned_nsb</p>
+<p>## Short description of the config</p>
+<p>dec_min_413 with NSB tuning to galactic source (src1).</p>
+<p>## Why this config is needed</p>
+<p>Reprocess with the latest version of lstchain v0.9.9. Previous prod_id is <cite>galsource_min_413_tuned_nsb</cite>.</p>
+<p>## Other information</p>
+<p>RF features following issue #369</p>
+<p>### command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20221108_galsource_min_413_tuned_nsb</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20221027_v0.9.9_base_prod</span> <span class="pre">--dec_list</span> <span class="pre">dec_min_413</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-11-02</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221027_v0.9.9_base_prod">20221027_v0.9.9_base_prod</a></p></td>
+<td><p>20221027_v0.9.9_base_prod</p></td>
+<td><p># 20221027_v0.9.9_base_prod</p>
+<p>New full base prod with lstchain v0.9.9 and all declinations and nodes currently available.
+Commented stages &gt; merge, so only the DL1 will be produced.
+Training will be done dec wise depending on required tunings / lstchain configs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20221027_v0.9.9_base_prod</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span>&#160; <span class="pre">dec_3476</span>&#160; <span class="pre">dec_4822</span>&#160; <span class="pre">dec_6166</span>&#160; <span class="pre">dec_6676</span>&#160; <span class="pre">dec_931</span>&#160; <span class="pre">dec_min_2924</span>&#160; <span class="pre">dec_min_413</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-10-27</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221027_v0.9.9_crab_tuned">20221027_v0.9.9_crab_tuned</a></p></td>
+<td><p>20221027_v0.9.9_crab_tuned</p></td>
+<td><p># 20221027_v0.9.9_crab_tuned</p>
+<p>DL1ab step to apply NSB tuning for Crab.</p>
+<p>Generated config:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span> <span class="pre">--prod_id</span> <span class="pre">20221027_v0.9.9_crab_tuned</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20221021_crab_full_lstchain097</span>
+<span class="pre">`</span></code></p>
+<p>lstchain config taken from <cite>20221021_crab_full_lstchain097</cite></p>
+<p>Contact:Thomas or Abelardo</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-10-21</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221021_crab_full_lstchain097">20221021_crab_full_lstchain097</a></p></td>
+<td><p>20221021_crab_full_lstchain097</p></td>
+<td><p># PROD 20221021_crab_full_lstchain097</p>
+<p>Full pipeline for Crab (dec_2276) with latest lstchain release v0.9.7</p>
+<p>Generated with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20221021_crab_full_lstchain097</span> <span class="pre">--dec_list</span> <span class="pre">dec_2276</span>
+<span class="pre">`</span></code></p>
+<p>Added to lstchain config:
+<a href="#id56"><span class="problematic" id="id57">``</span></a>`
+“image_modifier”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 1.62,
+“extra_bias_in_dim_pixels”: 0.655,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 2.08,
+“increase_psf”: false,
+“smeared_light_fraction”: 0</p>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+<p><a href="#id58"><span class="problematic" id="id59">``</span></a><a href="#id60"><span class="problematic" id="id61">`</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-10-10</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220913_crab_theta23_tuned">20220913_crab_theta23_tuned</a></p></td>
+<td><p>20220913_crab_theta23_tuned</p></td>
+<td><p>#  20220913_crab_theta23_tuned</p>
+<p>Following production <cite>20220902_crab_test_nodes</cite> that had no tuning.</p>
+<p>Processing of nodes node_theta_23.630_az_100.758 and <a href="#id84"><span class="problematic" id="id85">node_theta_23.630_az_259.265_</span></a> only for:
+- dl1ab</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>with tuned config from [crab tuned prod](<a class="github reference external" href="https://github.com/cta-observatory/lstmcpipe/blob/master/production_configs/20220518_v0.9.6_allsky_dec2276_tuned/lstchain_config_dec_2276_tuned.json">cta-observatory/lstmcpipe</a>)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>merge</p></li>
+<li><dl class="simple">
+<dt>dl1_to_dl2</dt><dd><ul>
+<li><p>with trained RF from crab tuned prod: <cite>/fefs/aswg/data/models/AllSky/20220518_allsky_dec2276_tuned/dec_2276</cite></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>dl2_to_irfs</p></li>
+</ul>
+<p>See <a class="github reference external" href="https://github.com/cta-observatory/lst-sim-config/issues/49#issuecomment-1235392024">cta-observatory/lst-sim-config#49</a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-10-08</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20221006_src3_test_nodes">20221006_src3_test_nodes</a></p></td>
+<td><p>20221006_src3_test_nodes</p></td>
+<td><p># 20221006_src3_test_nodes</p>
+<p>DL1ab with tuned configuration
+(DL1ab + merge DL1)</p>
+<p>lstchain config taken from 2022-06-01 prod</p>
+<p>## command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyTestingDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20221006_src3_test_nodes</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20220902_crab_test_nodes</span> <span class="pre">dec=3476</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-10-07</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220913_crab_test_nodes_tuned">20220913_crab_test_nodes_tuned</a></p></td>
+<td><p>20220913_crab_test_nodes_tuned</p></td>
+<td><p># 20220913_crab_test_nodes_tuned</p>
+<p>All test nodes analysed for Crab: NSB tuning and models trained at dec_2276</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyTestingDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20220902_crab_test_nodes</span> <span class="pre">--kwargs</span> <span class="pre">target_prod_id=20220913_crab_test_nodes_tuned</span> <span class="pre">dec=dec_2276</span>
+<span class="pre">`</span></code></p>
+<p>Then replaced path models with <cite>/fefs/aswg/data/models/AllSky/20220518_allsky_dec2276_tuned/dec_2276</cite></p>
+<p>Error during merging, restarted by hand the following:</p>
+<p><a href="#id62"><span class="problematic" id="id63">``</span></a>`
+lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id86"><span class="problematic" id="id87">node_theta_14.984_az_175.158_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_14.984_az_175.158__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id88"><span class="problematic" id="id89">node_theta_32.059_az_102.217_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_32.059_az_102.217__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id90"><span class="problematic" id="id91">node_theta_32.059_az_355.158_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_32.059_az_355.158__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id92"><span class="problematic" id="id93">node_theta_43.197_az_143.441_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_43.197_az_143.441__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id94"><span class="problematic" id="id95">node_theta_43.197_az_230.005_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_43.197_az_230.005__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id96"><span class="problematic" id="id97">node_theta_52.374_az_175.158_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_52.374_az_175.158__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id98"><span class="problematic" id="id99">node_theta_60.528_az_223.818_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_60.528_az_223.818__merged.h5 –no-image</p>
+<p>lstchain_merge_hdf5_files -d /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/<a href="#id100"><span class="problematic" id="id101">node_theta_68.068_az_175.158_</span></a>/ -o /fefs/aswg/data/mc/DL1/AllSky/20220913_crab_test_nodes_tuned/TestingDataset/dl1_20220913_crab_test_nodes_tuned_node_theta_68.068_az_175.158__merged.h5 –no-image
+<a href="#id64"><span class="problematic" id="id65">``</span></a><a href="#id66"><span class="problematic" id="id67">`</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-09-12</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220902_crab_test_nodes">20220902_crab_test_nodes</a></p></td>
+<td><p>20220902_crab_test_nodes</p></td>
+<td><p># New Prod config</p>
+<p>## 20220902_crab_test_nodes</p>
+<p>## Short description of the config</p>
+<p>Generated as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyTesting</span> <span class="pre">--prod_id</span> <span class="pre">20220902_crab_test_nodes</span> <span class="pre">--kwargs</span> <span class="pre">dec=dec_2276</span>
+<span class="pre">`</span></code></p>
+<p>Then edited manually to replace the path model with <cite>/fefs/aswg/data/models/AllSky/20220518_allsky_dec2276_tuned/dec_2276/</cite></p>
+<p>lstchain config copied from <cite>/fefs/aswg/data/models/AllSky/20220518_allsky_dec2276_tuned/dec_2276/</cite></p>
+<p>## Why this config is needed</p>
+<p>Config to produce the new test nodes using Crab dec training.
+See <a class="github reference external" href="https://github.com/cta-observatory/lst-sim-config/issues/49#issuecomment-1235392024">cta-observatory/lst-sim-config#49</a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-09-06</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/template_prod">template_prod</a></p></td>
+<td><p>template</p></td>
+<td><p># New Prod Config</p>
+<p>## template_prod</p>
+<p>## Short description of the config</p>
+<p>Modified standard config to add twice the Crab NSB</p>
+<p>## Why this config is needed</p>
+<p>Processing of Crab night 1054-07-15</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-09-06</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220905_src4_high_NSB">20220905_src4_high_NSB</a></p></td>
+<td><p>20220905_src4_high_NSB</p></td>
+<td><p># Source with dec 6166 and NSB tuning</p>
+<p>## 20220905</p>
+<p>## Short description of the config</p>
+<p>Config for a source src4 with dec 6166 and NSB tuning:</p>
+<dl class="simple">
+<dt>“image_modifier”:{</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 1.82,
+“extra_bias_in_dim_pixels”: 0.815,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 4.098</p>
+</dd>
+</dl>
+<p>}</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-06-27</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220624_dec_4822_tuned_TestDIffuseGammas">20220624_dec_4822_tuned_TestDIffuseGammas</a></p></td>
+<td><p>20220624_dec_4822_tuned</p></td>
+<td><p>Allsky Test Diffuse Gammas production, with nsb tuning, for the dec_4822 declination band.</p>
+<p>Config files:
+- lstmcpipe_config_2022-06-24_PathConfigAllSky_TestDiffuseGammas.yaml
+- lstchain_config_2022-06-24.json</p>
+<p>The command used for generating the config files is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">24_05_2022_dec_4822</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20220511_allsky_std</span> <span class="pre">--dec_list</span> <span class="pre">dec_4822</span> <span class="pre">--overwrite</span>
+<span class="pre">`</span></code></p>
+<p>And then I changed it by hand.</p>
+<p>PathConfigAllSkyFullDL1ab  -&gt; TestDiffuseGammas
+24_05_2022_dec_4822 -&gt; 24062022_dec_4822</p>
+<p>Plus I changed the file to match the stages and the nodes that need.</p>
+<p>The source for which this production is required is “src2”</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-06-01</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220601_dec3476_tuned">20220601_dec3476_tuned</a></p></td>
+<td><p>20220601_dec3476_tuned</p></td>
+<td><p># 20220601_dec3476_tuned</p>
+<p>DL1ab for dec3476 with tuned configuration</p>
+<p>lstchain config taken from 2022-05-23 prod</p>
+<p>## command-line:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span> <span class="pre">PathConfigAllSkyFullDL1ab</span> <span class="pre">--prod_id</span> <span class="pre">20220601_dec3476_tuned</span> <span class="pre">--dec_list</span> <span class="pre">dec_3476</span> <span class="pre">--kwargs</span> <span class="pre">source_prod_id=20220531_dec3476_std</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-05-31</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220531_dec3476_std">20220531_dec3476_std</a></p></td>
+<td><p>20220531_dec3476_std</p></td>
+<td><p># 20220531_dec3476_std</p>
+<p>Standard production for declination 3476 that was missing Proton simtel files for some nodes.</p>
+<p>Config generated with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">lstmcpipe_generate_config</span>&#160; <span class="pre">PathConfigAllSkyFull</span> <span class="pre">--prod_id</span> <span class="pre">20220531_dec3476_std</span> <span class="pre">--dec_list</span> <span class="pre">dec_3476</span>
+<span class="pre">`</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-05-31</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220524_dec_4822_tuned">20220524_dec_4822_tuned</a></p></td>
+<td><p>20220524_dec_4822_tuned</p></td>
+<td><p>Allsky MC production, with nsb tuning, for the dec_4822 declination band.</p>
+<p>Config files:
+- lstmcpipe_config_2022-05-24_PathConfigAllSkyFullDL1ab.yaml
+- lstchain_config_2022-05-24.json</p>
+<p>The command used for generating the config files is:</p>
+<p>“lstmcpipe_generate_config PathConfigAllSkyFullDL1ab –prod_id 24_05_2022_dec_4822 –kwargs source_prod_id=20220511_allsky_std –dec_list dec_4822 –overwrite”</p>
+<p>In a second moment I changed the prod_id (everywhere) by hand, from “24_05_2022” to “24_05_2022_dec_4822”</p>
+<p>The source for which this production is required is “src2”</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-05-30</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220527_allsky_std_src2_diffgamma">20220527_allsky_std_src2_diffgamma</a></p></td>
+<td><p>20220527_src2_diffgamma</p></td>
+<td><p># 20220527_src2_diffgamma</p>
+<p>Standard production (no tuning) of DL1 testing diffuse gammas for declination 4822, only four nodes along the src2 path.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-05-25</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220523_dec_413_tuned_nsb">20220523_dec_413_tuned_nsb</a></p></td>
+<td><p>galsource_min_413_tuned_nsb</p></td>
+<td><p># Galactic source with dec minus 413 and NSB tuning</p>
+<p>## 20220523</p>
+<p>## Short description of the config</p>
+<p>Config for a galactic source with dec min_413 and NSB tuning:</p>
+<dl>
+<dt>“image_modifier”: {</dt><dd><blockquote>
+<div><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 0.937
+“extra_bias_in_dim_pixels”: 0.323
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 1.041</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>## Why this config is needed</p>
+<p>Processing of data taken from this galactic source which has a particular NSB level</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-05-24</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220523_src3_dec3476_4822_tuned_nsb">20220523_src3_dec3476_4822_tuned_nsb</a></p></td>
+<td><p>src3_dec3476_4822_tuned_nsb</p></td>
+<td><p># Source with dec 3476/4822 and NSB tuning</p>
+<p>## 20220523</p>
+<p>## Short description of the config</p>
+<p>Config for a source with dec 3476/4822 and NSB tuning:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“image_modifier”: {</dt><dd><p>“increase_nsb”: true,
+“extra_noise_in_dim_pixels”: 0.977,
+“extra_bias_in_dim_pixels”: 0.388,
+“transition_charge”: 8,
+“extra_noise_in_bright_pixels”: 1.197</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>## Why this config is needed</p>
+<p>See wiki page (src 3)
+<a class="reference external" href="https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions">https://www.lst1.iac.es/wiki/index.php/MC_analysis_and_IRF_production#lstmcpipe_productions</a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-05-24</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220523_allsky_std">20220523_allsky_std</a></p></td>
+<td><p>20220523_allsky_std</p></td>
+<td><p># 20220523_allsky_std</p>
+<p>Standard production (no tuning) for declinations 6676 and min_2924</p>
+<p>## Paths</p>
+<p><a href="#id68"><span class="problematic" id="id69">``</span></a>`
+/fefs/aswg/data/mc/IRF/AllSky/20220523_allsky_std/TestingDataset/{dec}/{node}/</p>
+<p>/fefs/aswg/data/models/AllSky/20220523_allsky_std/{dec}/
+<a href="#id70"><span class="problematic" id="id71">``</span></a><a href="#id72"><span class="problematic" id="id73">`</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-05-20</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220518_v0.9.6_allsky_dec2276_tuned">20220518_v0.9.6_allsky_dec2276_tuned</a></p></td>
+<td><p>20220518_allsky_dec2276_tuned</p></td>
+<td><p># 20220518_allsky_dec2276_tuned</p>
+<ul class="simple">
+<li><p>DL1ab processing from <cite>20220511_allsky_std</cite> production from dec_2276</p></li>
+<li><dl class="simple">
+<dt>workflow stages:</dt><dd><ul>
+<li><p>dl1ab</p></li>
+<li><p>merge_dl1</p></li>
+<li><p>train_pipe</p></li>
+<li><p>dl1_to_dl2</p></li>
+<li><p>dl2_to_irfs</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>lstchain config provided by Abelardo</p></li>
+<li><p>paths: <cite>/fefs/aswg/data/mc/{data_level}/AllSky/20220518_allsky_dec2276_tuned/{train_test}/dec_2276/</cite></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-05-20</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220511_v0.9.6_allsky_std">20220511_v0.9.6_allsky_std</a></p></td>
+<td><p>20220511_allsky_std</p></td>
+<td><p># 20220511_v0.9.6_allsky_std</p>
+<p>AllSky production with standard lstchain config (no tuning) for the following declinations:</p>
+<p>[‘dec_2276’,’dec_3476’,’dec_4822’,’dec_931’,’dec_min_413’]</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-03-21</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220215_v0.9.1_prod5_trans_80_local_tailcut_8_4">20220215_v0.9.1_prod5_trans_80_local_tailcut_8_4</a></p></td>
+<td><p>local_tailcut_8_4</p></td>
+<td><p># Official prod</p>
+<p>## 20220215_v0.9.1_prod5_trans_80_local_tailcut_8_4</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-03-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220304_v0.9.3_prod5_trans_80_zen40az180_local_tailcut_8_4">20220304_v0.9.3_prod5_trans_80_zen40az180_local_tailcut_8_4</a></p></td>
+<td><p>zen40az180_local_tailcut_8_4</p></td>
+<td><p>#Official prod</p>
+<p>##20220304_v0.9.3_prod5_trans_80_zen40az180_local_tailcut_8_4</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-03-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20220218_v0.9.2_prod5_trans_80_dl1ab_tune_MC_to_Crab">20220218_v0.9.2_prod5_trans_80_dl1ab_tune_MC_to_Crab</a></p></td>
+<td><p>dl1ab_tune_MC_to_Crab</p></td>
+<td><p>#Official prod</p>
+<p>##20220218_v0.9.2_prod5_trans_80_dl1ab_tune_MC_to_Crab</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-03-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20210923_v0.7.5_prod5_trans_80_dynamic_cleaning">20210923_v0.7.5_prod5_trans_80_dynamic_cleaning</a></p></td>
+<td><p>dynamic_cleaning</p></td>
+<td><p>#Official prod</p>
+<p>##20210923_v0.7.5_prod5_trans_80_dynamic_cleaning</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-03-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20210506_v0.7.3_prod5_trans_80_zen40deg_local_tailcut_8_4">20210506_v0.7.3_prod5_trans_80_zen40deg_local_tailcut_8_4</a></p></td>
+<td><p>zen40deg_local_tailcut_8_4</p></td>
+<td><p>#Official prod</p>
+<p>##20210506_v0.7.3_prod5_trans_80_zen40deg_local_tailcut_8_4</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-03-16</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/20210416_v0.7.3_prod5_trans_80_local_taicut_8_4">20210416_v0.7.3_prod5_trans_80_local_taicut_8_4</a></p></td>
+<td><p>local_taicut_8_4</p></td>
+<td><p>#Official prod</p>
+<p>##20210416_v0.7.3_prod5_trans_80_local_taicut_8_4</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-03-08</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/nsb_psf_tuned_zen40_src2">nsb_psf_tuned_zen40_src2</a></p></td>
+<td><p>zen40az180_dl1ab_tuned_nsb_psf_src2</p></td>
+<td><p># Ze40 south pointing Config</p>
+<p>## zen40az180_dl1ab_tuned_nsb_psf_src2</p>
+<p>## Short description of the config</p>
+<p>Config for ze40 and south pointing with PSF and NSB tuned on data</p>
+<p>## Why this config is needed</p>
+<p>Processing of data for which tuned MC is missing</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-03-07</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/nsb_tuned_zen40_scr1">nsb_tuned_zen40_scr1</a></p></td>
+<td><p>zen40az180_dl1ab_tuned_nsb_src1</p></td>
+<td><p># NSB tuned Config</p>
+<p>## zen40az180_dl1ab_tuned_nsb_src1</p>
+<p>## Short description of the config</p>
+<p>Config for 40zd and 180deg with tuning to the NSB of the required field</p>
+<p>## Why this config is needed</p>
+<p>Processing of data with specific NSB</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2022-03-04</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/psf_tuned_zen40">psf_tuned_zen40</a></p></td>
+<td><p>zen40az180_dl1ab_tuned_psf</p></td>
+<td><p># New Prod Config</p>
+<p>## zen40az180_dl1ab_tuned_psf</p>
+<p>## Short description of the config</p>
+<p>Modified standard config to tune the PSF and to run the process for zenith 40 deg, south pointing MC</p>
+<p>## Why this config is needed</p>
+<p>For aiding in the source-independent analysis of sources like the AGNs where the NSB is weak and therefore not requiring any change.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2022-03-04</p></td>
+<td><p><a class="reference external" href="https://github.com/cta-observatory/lstmcpipe/tree/master/production_configs/psf_tuned_zen20">psf_tuned_zen20</a></p></td>
+<td><p>zen20az180_dl1ab_tuned_psf</p></td>
+<td><p># New Prod Config</p>
+<p>## zen20az180_dl1ab_tuned_psf</p>
+<p>## Short description of the config</p>
+<p>Modified standard config to tune the PSF and to run the process for zenith 20 deg, south pointing MC</p>
+<p>## Why this config is needed</p>
+<p>For aiding in the source-independent analysis of sources like the AGNs where the NSB is weak and therefore not requiring any change.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lstmcpipe_user_doc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyzers documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pipeline.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pipelines &amp; configs generation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Thomas Vuillaume,Enrique Garcia,Lukas Nickel,Arnau Aguasca-Cabot,.  Last updated 23 Dec 2024 16:31.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
